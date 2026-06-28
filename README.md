@@ -23,6 +23,12 @@ python -m pip install -e .[dev]
 python -m css_probes.cli run-all --out reports/css_probe_report.json
 ```
 
+This writes the machine report to `reports/css_probe_report.json` and a human-readable
+operator-card sidecar to `reports/css_probe_report.operator_cards.md`.
+
+The JSON report includes one Semantic Surgery Packet and one certification record per
+probe. See `docs/PHASE0_COMPLIANCE.md` for the spec-to-implementation mapping.
+
 ## Run one probe
 
 ```bash
@@ -52,18 +58,27 @@ pytest -q
 - `off_target_regression_probe`
 - `rollback_probe`
 - `operator_vs_text_benchmark`
+- `koopman_dynamics_message_probe`
+- `proof_state_surgery_probe`
 
 ## Safety posture
 
 Phase-one CSS allows only synthetic, ephemeral, or removable transformations. It rejects autonomous permanent weight edits, opaque latent packets, verifier-bypassing operators, and self-modifying operator loops.
 
-## Next implementation step
+## Controlled real-model adapters
 
-Add optional real-model integration behind separate adapters:
+Real-model activation probes are available behind optional extras and local-only loaders:
 
-```text
-css_probes/hooks/transformer_lens_adapter.py
-examples/real_model_activation_surgery.py
+```bash
+python -m pip install -e .[real-hf]
+python -m css_probes.cli real list-adapters
+python -m css_probes.cli real activation-surgery \
+  --backend huggingface \
+  --model /path/to/local/model \
+  --prompt-suite examples/prompt_suite_harmless.json \
+  --layer 0 \
+  --stream residual \
+  --out reports/real_activation_surgery.json
 ```
 
-The real-model adapter should collect activation streams, apply ephemeral hooks, evaluate target/off-target prompt suites, and emit the same certificate schema as the synthetic suite.
+These adapters use ephemeral inference hooks only. They do not download models, save models, mutate weights, run optimizer steps, or relax packet/certificate gates. See `docs/REAL_MODEL_ADAPTERS.md`.

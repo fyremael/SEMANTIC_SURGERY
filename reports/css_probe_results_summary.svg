@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <style>
+    .bg { fill: #f7f9fb; }
+    .panel { fill: #ffffff; stroke: #d6dde5; stroke-width: 1; }
+    .title { font: 700 42px Arial, Helvetica, sans-serif; fill: #17202a; }
+    .subtitle { font: 18px Arial, Helvetica, sans-serif; fill: #5f6b76; }
+    .metric { font: 700 34px Arial, Helvetica, sans-serif; fill: #17202a; }
+    .label { font: 15px Arial, Helvetica, sans-serif; fill: #17202a; }
+    .small { font: 13px Arial, Helvetica, sans-serif; fill: #5f6b76; }
+    .section { font: 700 22px Arial, Helvetica, sans-serif; fill: #17202a; }
+    .track { fill: #e8edf3; }
+    .green { fill: #1f8a5b; }
+    .blue { fill: #2367b5; }
+    .red { fill: #b42318; }
+  </style>
+  <rect class="bg" width="1280" height="720"/>
+  <text x="64" y="72" class="title">Certified Semantic Surgery Phase 0</text>
+  <text x="64" y="106" class="subtitle">11/11 probes accepted, all packets valid, certification Levels 1-6 covered</text>
+
+  <rect x="64" y="138" width="238" height="48" rx="8" class="panel"/><text x="82" y="158" class="small">Accepted</text><text x="82" y="180" class="metric">11/11</text>
+  <rect x="350" y="138" width="238" height="48" rx="8" class="panel"/><text x="368" y="158" class="small">Invalid packets</text><text x="368" y="180" class="metric">0</text>
+  <rect x="636" y="138" width="238" height="48" rx="8" class="panel"/><text x="654" y="158" class="small">Target success delta</text><text x="654" y="180" class="metric">0.3203</text>
+  <rect x="922" y="138" width="238" height="48" rx="8" class="panel"/><text x="940" y="158" class="small">Pseudospectral proxy</text><text x="940" y="180" class="metric">4.073/5.0</text>
+
+  <rect x="44" y="205" width="560" height="295" rx="8" class="panel"/>
+  <text x="64" y="228" class="section">Certification coverage</text>
+  <text x="64" y="255" class="label">L1 Typed</text><rect x="220" y="245" width="330" height="14" rx="7" class="track"/><rect x="220" y="245" width="330" height="14" rx="7" class="green"/><text x="570" y="256" class="small">11/11</text><text x="64" y="289" class="label">L2 Bounded</text><rect x="220" y="279" width="330" height="14" rx="7" class="track"/><rect x="220" y="279" width="90" height="14" rx="7" class="green"/><text x="570" y="290" class="small">3/11</text><text x="64" y="323" class="label">L3 Behavioral</text><rect x="220" y="313" width="330" height="14" rx="7" class="track"/><rect x="220" y="313" width="90" height="14" rx="7" class="green"/><text x="570" y="324" class="small">3/11</text><text x="64" y="357" class="label">L4 Causal</text><rect x="220" y="347" width="330" height="14" rx="7" class="track"/><rect x="220" y="347" width="60" height="14" rx="7" class="green"/><text x="570" y="358" class="small">2/11</text><text x="64" y="391" class="label">L5 Spectral</text><rect x="220" y="381" width="330" height="14" rx="7" class="track"/><rect x="220" y="381" width="120" height="14" rx="7" class="green"/><text x="570" y="392" class="small">4/11</text><text x="64" y="425" class="label">L6 Rollback</text><rect x="220" y="415" width="330" height="14" rx="7" class="track"/><rect x="220" y="415" width="90" height="14" rx="7" class="green"/><text x="570" y="426" class="small">3/11</text>
+
+  <rect x="660" y="205" width="570" height="255" rx="8" class="panel"/>
+  <text x="690" y="228" class="section">Operator vs text target margin</text>
+  <text x="690" y="255" class="label">No message</text><rect x="850" y="245" width="300" height="14" rx="7" class="track"/><rect x="850" y="245" width="0" height="14" rx="7" class="blue"/><text x="1170" y="256" class="small">0</text><text x="690" y="289" class="label">Text</text><rect x="850" y="279" width="300" height="14" rx="7" class="track"/><rect x="850" y="279" width="35" height="14" rx="7" class="blue"/><text x="1170" y="290" class="small">0.04189</text><text x="690" y="323" class="label">Latent vector</text><rect x="850" y="313" width="300" height="14" rx="7" class="track"/><rect x="850" y="313" width="295" height="14" rx="7" class="blue"/><text x="1170" y="324" class="small">0.3446</text><text x="690" y="357" class="label">Additive operator</text><rect x="850" y="347" width="300" height="14" rx="7" class="track"/><rect x="850" y="347" width="300" height="14" rx="7" class="blue"/><text x="1170" y="358" class="small">0.35</text><text x="690" y="391" class="label">Low-rank operator</text><rect x="850" y="381" width="300" height="14" rx="7" class="track"/><rect x="850" y="381" width="0" height="14" rx="7" class="red"/><text x="1170" y="392" class="small">-0.0005283</text>
+
+  <rect x="44" y="532" width="1186" height="124" rx="8" class="panel"/>
+  <text x="64" y="566" class="section">Safety margins</text>
+  <text x="64" y="604" class="label">Rollback residue: 5.55e-17</text>
+  <text x="382" y="604" class="label">Rollout max norm: 1.043/5.0</text>
+  <text x="704" y="604" class="label">Operator advantage: 0.3081</text>
+  <text x="984" y="604" class="label">Off-target degradation: 0</text>
+</svg>

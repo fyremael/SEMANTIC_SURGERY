@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Phase 0 Results</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5f6b76;
+      --line: #d6dde5;
+      --paper: #f7f9fb;
+      --panel: #ffffff;
+      --ok: #1f8a5b;
+      --blue: #2367b5;
+      --teal: #168a9a;
+      --amber: #ad6a00;
+      --red: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.45;
+    }
+    header {
+      padding: 32px clamp(20px, 5vw, 64px) 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 14px; font-size: 20px; }
+    main { padding: 24px clamp(20px, 5vw, 64px) 48px; }
+    .subhead { color: var(--muted); max-width: 920px; margin: 0; }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin: 24px 0;
+    }
+    .metric, section, .probe {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .metric .value { font-size: 32px; font-weight: 700; margin-top: 6px; }
+    .metric .label, .small { color: var(--muted); font-size: 13px; }
+    section { margin: 20px 0; }
+    .barrow {
+      display: grid;
+      grid-template-columns: 150px minmax(160px, 1fr) 72px;
+      gap: 12px;
+      align-items: center;
+      margin: 11px 0;
+    }
+    .bar {
+      height: 12px;
+      background: #e8edf3;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .fill { height: 100%; background: var(--ok); border-radius: inherit; }
+    .fill.blue { background: var(--blue); }
+    .fill.teal { background: var(--teal); }
+    .probegrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .probe h3 { margin: 0 0 8px; font-size: 16px; }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #e5f4ed;
+      color: var(--ok);
+      font-weight: 700;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .level-badge { background: #e8f0fb; color: var(--blue); }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(120px, 0.9fr) minmax(120px, 1.1fr);
+      gap: 6px 12px;
+      margin: 12px 0 0;
+      font-size: 13px;
+    }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+    .two {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 760px) {
+      .two { grid-template-columns: 1fr; }
+      .barrow { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Certified Semantic Surgery Phase 0 Results</h1>
+    <p class="subhead">Synthetic probe suite certificate generated from <code>reports/css_probe_report.json</code>. The run accepted all probes, validated every packet, and covered certification Levels 1-6.</p>
+  </header>
+  <main>
+    <div class="grid">
+      <div class="metric"><div class="label">Suite accepted</div><div class="value">true</div><div class="small">Overall accept/reject decision</div></div>
+      <div class="metric"><div class="label">Accepted probes</div><div class="value">11/11</div><div class="small">Probe acceptance count</div></div>
+      <div class="metric"><div class="label">Invalid packets</div><div class="value">0</div><div class="small">Packet schema warnings in final report</div></div>
+      <div class="metric"><div class="label">Levels covered</div><div class="value">1-6</div><div class="small">Phase 0 certification ladder</div></div>
+    </div>
+
+    <div class="two">
+      <section>
+        <h2>Certification Coverage</h2>
+        
+    <div class="barrow">
+      <div>L1 Typed</div>
+      <div class="bar"><div class="fill" style="width: 100.0%"></div></div>
+      <div class="small">11/11</div>
+    </div>
+
+    <div class="barrow">
+      <div>L2 Bounded</div>
+      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
+      <div class="small">3/11</div>
+    </div>
+
+    <div class="barrow">
+      <div>L3 Behavioral</div>
+      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
+      <div class="small">3/11</div>
+    </div>
+
+    <div class="barrow">
+      <div>L4 Causal</div>
+      <div class="bar"><div class="fill" style="width: 18.2%"></div></div>
+      <div class="small">2/11</div>
+    </div>
+
+    <div class="barrow">
+      <div>L5 Spectral</div>
+      <div class="bar"><div class="fill" style="width: 36.4%"></div></div>
+      <div class="small">4/11</div>
+    </div>
+
+    <div class="barrow">
+      <div>L6 Rollback</div>
+      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
+      <div class="small">3/11</div>
+    </div>
+      </section>
+      <section>
+        <h2>Key Safety Margins</h2>
+        <dl>
+          <dt>Target success delta</dt><dd>0.3203</dd>
+          <dt>Activation rollback residue</dt><dd>5.55e-17</dd>
+          <dt>Koopman pseudospectral proxy</dt><dd>4.073 / 5.0</dd>
+          <dt>Koopman rollout max norm</dt><dd>1.043 / 5.0</dd>
+          <dt>Operator advantage</dt><dd>0.3081</dd>
+          <dt>Off-target degradation max</dt><dd>0</dd>
+        </dl>
+      </section>
+    </div>
+
+    <section>
+      <h2>Operator vs Text Transfer</h2>
+      
+    <div class="barrow">
+      <div>No message</div>
+      <div class="bar"><div class="fill blue" style="width: 0.0%"></div></div>
+      <div class="small">0</div>
+    </div>
+
+    <div class="barrow">
+      <div>Text-like instruction</div>
+      <div class="bar"><div class="fill blue" style="width: 12.0%"></div></div>
+      <div class="small">0.04189</div>
+    </div>
+
+    <div class="barrow">
+      <div>Latent vector</div>
+      <div class="bar"><div class="fill blue" style="width: 98.5%"></div></div>
+      <div class="small">0.3446</div>
+    </div>
+
+    <div class="barrow">
+      <div>Additive operator</div>
+      <div class="bar"><div class="fill blue" style="width: 100.0%"></div></div>
+      <div class="small">0.35</div>
+    </div>
+
+    <div class="barrow">
+      <div>Low-rank operator</div>
+      <div class="bar"><div class="fill teal" style="width: 0.2%"></div></div>
+      <div class="small">-0.0005283</div>
+    </div>
+
+    <div class="barrow">
+      <div>Operator + certificate</div>
+      <div class="bar"><div class="fill blue" style="width: 100.0%"></div></div>
+      <div class="small">0.35</div>
+    </div>
+    </section>
+
+    <section>
+      <h2>Probe Cards</h2>
+      <div class="probegrid">
+        
+    <div class="probe">
+      <h3>Activation patch</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_activation_patch_probe</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Low-rank op</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L5 Spectral</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_low_rank_operator_probe</dd>
+        <dt>Operator</dt><dd>activation_low_rank</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Norm drift</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_norm_drift_probe</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Spectral radius</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L5 Spectral</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_spectral_radius_probe</dd>
+        <dt>Operator</dt><dd>activation_low_rank</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Pseudospectrum</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L5 Spectral</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_pseudospectrum_probe</dd>
+        <dt>Operator</dt><dd>synthetic_linear_dynamics</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>linear_state</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Causal locality</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L4 Causal</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_causal_locality_probe</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Off-target</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L4 Causal</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_off_target_regression_probe</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Rollback</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_rollback_probe</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Operator vs text</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L3 Behavioral</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_operator_vs_text_benchmark</dd>
+        <dt>Operator</dt><dd>activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Koopman dynamics</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L5 Spectral</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_koopman_dynamics_message_probe</dd>
+        <dt>Operator</dt><dd>local_dynamics</dd>
+        <dt>Persistence</dt><dd>removable</dd>
+        <dt>Target</dt><dd>dynamics_state</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Proof state</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_proof_state_surgery_probe</dd>
+        <dt>Operator</dt><dd>proof_state_transition</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>proof_state</dd>
+      </dl>
+    </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

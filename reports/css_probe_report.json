@@ -1,0 +1,1521 @@
+{
+  "accepted": true,
+  "certification_summary": {
+    "coverage": {
+      "level_1_typed": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "norm_drift_probe",
+        "spectral_radius_probe",
+        "pseudospectrum_probe",
+        "causal_locality_probe",
+        "off_target_regression_probe",
+        "rollback_probe",
+        "operator_vs_text_benchmark",
+        "koopman_dynamics_message_probe",
+        "proof_state_surgery_probe"
+      ],
+      "level_2_bounded": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "norm_drift_probe"
+      ],
+      "level_3_behavioral": [
+        "activation_patch_probe",
+        "off_target_regression_probe",
+        "operator_vs_text_benchmark"
+      ],
+      "level_4_causal": [
+        "causal_locality_probe",
+        "off_target_regression_probe"
+      ],
+      "level_5_spectral": [
+        "low_rank_operator_probe",
+        "spectral_radius_probe",
+        "pseudospectrum_probe",
+        "koopman_dynamics_message_probe"
+      ],
+      "level_6_rollback_safe": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "rollback_probe"
+      ]
+    },
+    "levels_1_to_6_covered": true,
+    "phase": 0
+  },
+  "probes": [
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_3_behavioral",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": true,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": true
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "cosine_drift_mean": 0.9891088359141202,
+        "cosine_drift_min": 0.9886860023785768,
+        "norm_delta_max": 0.14999999999993371,
+        "norm_delta_mean": 0.14999999999993371,
+        "off_target_degradation_max": 0.0,
+        "off_target_delta": 0.018653450143599294,
+        "relative_norm_delta_max": 0.1499999999998085,
+        "relative_norm_delta_mean": 0.14999999999980276,
+        "rollback_residue": 5.551115123125783e-17,
+        "target_margin_delta": 0.14225706563550805,
+        "target_success_delta": 0.3203125
+      },
+      "name": "activation_patch_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.15,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:04ce2cad0686084c3a1c24c505c6fad9b0c5d86ad9981fec7ce122b15501420c",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for activation_patch_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.05,
+          "target_metric": "target_success_delta"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:04ce2cad0686084c3a1c24c505c6fad9b0c5d86ad9981fec7ce122b15501420c",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_activation_patch_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "norm_delta_max": 1.0,
+        "off_target_degradation_max": 0.02,
+        "rollback_residue_max": 1e-09,
+        "target_success_delta_min": 0.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_5_spectral",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": true,
+          "level_6_rollback_safe": true
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "cosine_drift_mean": 0.9999651008413627,
+        "cosine_drift_min": 0.9998638825927529,
+        "norm_delta_max": 0.01871778163047479,
+        "norm_delta_mean": 0.007835361982798595,
+        "off_target_delta": 4.460877918988342e-06,
+        "relative_norm_delta_max": 0.018717781630458973,
+        "relative_norm_delta_mean": 0.007835361982791752,
+        "rollback_residue": 6.106226635438361e-16,
+        "sigma_max": 1.0401320489841053,
+        "spectral_radius": 1.0399999999999892,
+        "target_margin_delta": -0.00018863841924529265
+      },
+      "name": "low_rank_operator_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.04,
+        "form": "h_prime = h + alpha * V U^T h",
+        "operator_type": "activation_low_rank",
+        "parameter_hash": "sha256:60c47517b398fbdbc2d31cb60bc0e47a2582648f4cfcb53c3991ba6ba89fca89",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": 3,
+        "spectral_norm": 1.0401320489841053,
+        "spectral_radius": 1.0399999999999892,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for low_rank_operator_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": 1.1,
+          "spectral_radius_max": 1.05
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "accepted"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * V U^T h",
+          "parameter_hash": "sha256:60c47517b398fbdbc2d31cb60bc0e47a2582648f4cfcb53c3991ba6ba89fca89",
+          "parameters_ref": "inline",
+          "rank": 3
+        },
+        "operator_type": "activation_low_rank",
+        "packet_id": "ssp_low_rank_operator_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [
+            "spectral_radius_probe"
+          ],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "rollback_residue_max": 1e-09,
+        "sigma_max": 1.1,
+        "spectral_radius_max": 1.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "cosine_drift_mean": 0.99510852217506,
+        "cosine_drift_min": 0.9949874393852146,
+        "norm_delta_max": 0.09999999999998635,
+        "norm_delta_mean": 0.09999999999998632,
+        "relative_norm_delta_max": 0.09999999999990287,
+        "relative_norm_delta_mean": 0.09999999999989903
+      },
+      "name": "norm_drift_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.1,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for norm_drift_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "accepted"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_norm_drift_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "norm_drift_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "norm_delta_max": 1.0
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_5_spectral"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": true,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "non_normality_fro": 0.005996229799055704,
+        "sigma_max": 1.0379946222956493,
+        "spectral_radius": 1.013790207100005,
+        "transient_growth_proxy": 1.2495586286681948
+      },
+      "name": "spectral_radius_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.06,
+        "form": "h_prime = h + alpha * V U^T h",
+        "operator_type": "activation_low_rank",
+        "parameter_hash": "sha256:4555a2cfa33ca4d5d9f62fe84519b4e35e899423edce3c6bdc445b69fa347832",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": 2,
+        "spectral_norm": 1.0379946222956493,
+        "spectral_radius": 1.013790207100005,
+        "target_shape": [
+          24
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for spectral_radius_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": 1.1,
+          "spectral_radius_max": 1.05
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "accepted"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * V U^T h",
+          "parameter_hash": "sha256:4555a2cfa33ca4d5d9f62fe84519b4e35e899423edce3c6bdc445b69fa347832",
+          "parameters_ref": "inline",
+          "rank": 2
+        },
+        "operator_type": "activation_low_rank",
+        "packet_id": "ssp_spectral_radius_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            24
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [
+            "spectral_radius_probe"
+          ],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "sigma_max": 1.1,
+        "spectral_radius_max": 1.05,
+        "transient_growth_max": 1.7
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_5_spectral"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": true,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "non_normality_fro": 2.0921834027853176e-17,
+        "pseudospectral_proxy": 4.159451654038516,
+        "sigma_max": 0.5470831746635972,
+        "spectral_radius": 0.5470831746635971,
+        "transient_growth_proxy": 1.0
+      },
+      "name": "pseudospectrum_probe",
+      "notes": [],
+      "operator": {
+        "form": "block_rotation_scaling",
+        "operator_type": "synthetic_linear_dynamics",
+        "persistence": "ephemeral",
+        "state_type": "linear_state",
+        "stream": "state",
+        "target_shape": [
+          12
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for pseudospectrum_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": 5.0,
+          "rollback_residue_max": null,
+          "sigma_max": 1.1,
+          "spectral_radius_max": 1.05
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "accepted"
+        },
+        "operator": {
+          "form": "block_rotation_scaling",
+          "parameter_hash": "sha256:f6390c75b0aa46435d744411daa575bb230c3064cfd857960e46697deeed7afe",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "synthetic_linear_dynamics",
+        "packet_id": "ssp_pseudospectrum_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            12
+          ],
+          "state_type": "linear_state",
+          "stream": "state"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [
+            "spectral_radius_probe",
+            "pseudospectrum_probe"
+          ],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "pseudospectral_proxy_max": 5.0,
+        "sigma_max": 1.1,
+        "spectral_radius_max": 1.05,
+        "transient_growth_proxy_max": 12.0
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_4_causal"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": true,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "best_layer": 3,
+        "causal_locality_score": 5.801916439120177,
+        "locality_ratio": 5.801916439120177,
+        "off_layer_max_abs_delta": 0.06894273714406074,
+        "target_delta": 0.3999999999998692,
+        "target_margin_delta": 0.3999999999998692,
+        "true_layer": 3
+      },
+      "name": "causal_locality_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.4,
+        "declared_layer": 3,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:a48d97006fc828a7265b1d5567c01fc60cacb2dd11b592b35cfb2d06ee9238b9",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          48
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for causal_locality_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.25,
+          "target_metric": "target_margin_delta"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:a48d97006fc828a7265b1d5567c01fc60cacb2dd11b592b35cfb2d06ee9238b9",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_causal_locality_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 3,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            48
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "activation_patch_probe"
+          ],
+          "causal_tests": [
+            "causal_locality_probe"
+          ],
+          "spectral_tests": [],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "causal_locality_score_min": 3.0,
+        "target_margin_delta_min": 0.25
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_3_behavioral",
+          "level_4_causal"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": true,
+          "level_4_causal": true,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "causal_locality_score": 299516272965.56256,
+        "off_target_degradation_max": 0.0,
+        "off_target_delta": 1.6150275561344074e-15,
+        "target_margin_delta": 0.2999999999999126
+      },
+      "name": "off_target_regression_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.3,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for off_target_regression_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.2,
+          "target_metric": "target_margin_delta"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_off_target_regression_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [
+            "causal_locality_probe"
+          ],
+          "spectral_tests": [],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "causal_locality_score_min": 10.0,
+        "off_target_degradation_max": 0.02,
+        "target_margin_delta_min": 0.2
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": true
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "inside_delta": 0.07945733371660237,
+        "rollback_residue": 0.0
+      },
+      "name": "rollback_probe",
+      "notes": [],
+      "operator": {
+        "alpha": 0.25,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for rollback_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "accepted"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_rollback_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "inside_delta_min": 0.05,
+        "rollback_residue_max": 1e-09
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_3_behavioral"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": true,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "additive_operator_off_target_delta": 1.8856444183867893e-15,
+        "additive_operator_target_margin_delta": 0.34999999999989806,
+        "bits_transmitted": 2048,
+        "efficiency_delta_per_bit": 0.00017089843749995022,
+        "latent_vector_bits": 2048,
+        "latent_vector_off_target_delta": 0.0015428105550000185,
+        "latent_vector_safe_delta_per_bit": 0.00016827233249390642,
+        "latent_vector_target_margin_delta": 0.34462173694752035,
+        "low_rank_operator_bits": 8192,
+        "low_rank_operator_off_target_delta": -2.388411646652485e-05,
+        "low_rank_operator_safe_delta_per_bit": -6.740948764340356e-08,
+        "low_rank_operator_target_margin_delta": -0.0005283344063082372,
+        "no_message_target_margin_delta": 0.0,
+        "off_target_degradation_max": 0.0,
+        "operator_absolute_advantage": 0.30811129405998017,
+        "operator_bits": 2048,
+        "operator_off_target_degradation_max": 0.0,
+        "operator_plus_certificate_target_margin_delta": 0.34999999999989806,
+        "operator_safe_delta_per_bit": 0.00017089843749995022,
+        "target_margin_delta": 0.34999999999989806,
+        "text_bits": 2,
+        "text_off_target_delta": -0.021983000375058855,
+        "text_safe_delta_per_bit": 0.009952852782429515,
+        "text_target_margin_delta": 0.041888705939917885
+      },
+      "name": "operator_vs_text_benchmark",
+      "notes": [],
+      "operator": {
+        "alpha": 0.35,
+        "form": "h_prime = h + alpha * v",
+        "operator_type": "activation_additive",
+        "parameter_hash": "sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for operator_vs_text_benchmark.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "operator_absolute_advantage"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v",
+          "parameter_hash": "sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "activation_additive",
+        "packet_id": "ssp_operator_vs_text_benchmark",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "off_target_degradation_max": 0.02,
+        "operator_absolute_advantage_min": 0.2
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_5_spectral"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": true,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "koopman_mse": 4.6859843104640945e-05,
+        "one_step_mse_improvement": 0.011184024607583113,
+        "persistence_mse": 0.011230884450687754,
+        "pseudospectral_proxy": 4.072839435800083,
+        "rollout_exploded": false,
+        "rollout_horizon": 16,
+        "rollout_max_norm": 1.0431673211794568,
+        "sigma_max": 0.8944403111206076,
+        "spectral_radius": 0.8928558927333521
+      },
+      "name": "koopman_dynamics_message_probe",
+      "notes": [],
+      "operator": {
+        "form": "x_next = x @ A_hat",
+        "operator_type": "local_dynamics",
+        "parameter_hash": "sha256:d8234f1d3121bbdfe364c94f116c7669c4fbc1bf368aae8ed6d465dc1110abe8",
+        "parameters_ref": "inline",
+        "persistence": "removable",
+        "state_type": "dynamics_state",
+        "stream": "trajectory",
+        "target_shape": [
+          2
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for koopman_dynamics_message_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": 5.0,
+          "rollback_residue_max": null,
+          "sigma_max": 1.1,
+          "spectral_radius_max": 1.05
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "one_step_mse_improvement"
+        },
+        "operator": {
+          "form": "x_next = x @ A_hat",
+          "parameter_hash": "sha256:d8234f1d3121bbdfe364c94f116c7669c4fbc1bf368aae8ed6d465dc1110abe8",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "local_dynamics",
+        "packet_id": "ssp_koopman_dynamics_message_probe",
+        "persistence": "removable",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            2
+          ],
+          "state_type": "dynamics_state",
+          "stream": "trajectory"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [
+            "spectral_radius_probe",
+            "pseudospectrum_probe"
+          ],
+          "unit_tests": []
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "one_step_mse_improvement_min": 0.005,
+        "pseudospectral_proxy_max": 5.0,
+        "rollout_max_norm_max": 5.0,
+        "sigma_max": 1.1,
+        "spectral_radius_max": 1.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": false,
+          "level_3_behavioral": false,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": false
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 0
+      },
+      "metrics": {
+        "checker_accepted": true,
+        "proof_closed": true,
+        "steps": 2
+      },
+      "name": "proof_state_surgery_probe",
+      "notes": [],
+      "operator": {
+        "form": "intro; exact assumption",
+        "operator_type": "proof_state_transition",
+        "parameter_hash": "sha256:1e99f7aef2c8e96a97e3d39d20127d15d8114736d6cc5ecab482897e5535adc8",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "state_type": "proof_state",
+        "stream": "proof_stack",
+        "tactic": "intro; exact assumption",
+        "target_shape": [
+          1
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for proof_state_surgery_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": null,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": null,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": null,
+          "target_metric": "proof_closed"
+        },
+        "operator": {
+          "form": "intro; exact assumption",
+          "parameter_hash": "sha256:1e99f7aef2c8e96a97e3d39d20127d15d8114736d6cc5ecab482897e5535adc8",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "proof_state_transition",
+        "packet_id": "ssp_proof_state_surgery_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "synthetic_probe_suite"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            1
+          ],
+          "state_type": "proof_state",
+          "stream": "proof_stack"
+        },
+        "verifier": {
+          "behavioral_tests": [],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "proof_state_surgery_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "checker_accepted_required": true,
+        "proof_closed_required": true
+      },
+      "warnings": []
+    }
+  ],
+  "suite": "css-probes",
+  "summary": {
+    "num_accepted": 11,
+    "num_probes": 11,
+    "num_rejected": 0
+  },
+  "version": "0.1.0"
+}

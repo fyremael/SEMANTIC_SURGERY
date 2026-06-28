@@ -13,6 +13,9 @@ dependencies = ["numpy>=1.24"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
+real-tl = ["torch>=2.0", "transformer-lens>=2.0"]
+real-hf = ["torch>=2.0", "transformers>=4.40"]
+real = ["torch>=2.0", "transformer-lens>=2.0", "transformers>=4.40"]
 
 [project.scripts]
 css-probes = "css_probes.cli:main"

@@ -2,13 +2,30 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from contextlib import contextmanager
+from dataclasses import dataclass
+import hashlib
 from typing import Iterator
 
 import numpy as np
 
 from .metrics import spectral_norm, spectral_radius
+
+
+def array_sha256(array: np.ndarray) -> str:
+    arr = np.ascontiguousarray(array)
+    digest = hashlib.sha256()
+    digest.update(str(arr.dtype).encode("utf-8"))
+    digest.update(str(arr.shape).encode("utf-8"))
+    digest.update(arr.tobytes())
+    return f"sha256:{digest.hexdigest()}"
+
+
+def combine_hashes(*parts: str) -> str:
+    digest = hashlib.sha256()
+    for part in parts:
+        digest.update(part.encode("utf-8"))
+    return f"sha256:{digest.hexdigest()}"
 
 
 class SemanticOperator:
@@ -29,6 +46,10 @@ class SemanticOperator:
     def metadata(self) -> dict[str, object]:
         return {"operator_type": self.operator_type, "persistence": self.persistence}
 
+    def _check_last_dim(self, state: np.ndarray, dim: int) -> None:
+        if state.shape[-1] != dim:
+            raise ValueError(f"state last dimension {state.shape[-1]} does not match operator dimension {dim}")
+
 
 @dataclass(frozen=True)
 class ActivationAdditiveOperator(SemanticOperator):
@@ -37,10 +58,16 @@ class ActivationAdditiveOperator(SemanticOperator):
     operator_type: str = "activation_additive"
     persistence: str = "ephemeral"
 
+    def __post_init__(self) -> None:
+        if self.vector.ndim != 1:
+            raise ValueError("vector must be rank-1 with shape [dim]")
+
     def apply(self, state: np.ndarray) -> np.ndarray:
+        self._check_last_dim(state, self.vector.shape[0])
         return state + self.alpha * self.vector
 
     def invert(self, state: np.ndarray) -> np.ndarray:
+        self._check_last_dim(state, self.vector.shape[0])
         return state - self.alpha * self.vector
 
     def metadata(self) -> dict[str, object]:
@@ -49,6 +76,10 @@ class ActivationAdditiveOperator(SemanticOperator):
             "persistence": self.persistence,
             "alpha": float(self.alpha),
             "rank": None,
+            "form": "h_prime = h + alpha * v",
+            "target_shape": [int(self.vector.shape[0])],
+            "parameters_ref": "inline",
+            "parameter_hash": array_sha256(self.vector),
         }
 
 
@@ -71,9 +102,11 @@ class LowRankOperator(SemanticOperator):
         return np.eye(d) + self.alpha * (self.v @ self.u.T)
 
     def apply(self, state: np.ndarray) -> np.ndarray:
+        self._check_last_dim(state, self.u.shape[0])
         return state @ self.transform_matrix()
 
     def invert(self, state: np.ndarray) -> np.ndarray:
+        self._check_last_dim(state, self.u.shape[0])
         inv = np.linalg.inv(self.transform_matrix())
         return state @ inv
 
@@ -87,6 +120,10 @@ class LowRankOperator(SemanticOperator):
             "persistence": self.persistence,
             "alpha": float(self.alpha),
             "rank": int(self.u.shape[1]),
+            "form": "h_prime = h + alpha * V U^T h",
+            "target_shape": [int(self.u.shape[0])],
+            "parameters_ref": "inline",
+            "parameter_hash": combine_hashes(array_sha256(self.u), array_sha256(self.v)),
             "spectral_radius": float(spectral_radius(mat)),
             "spectral_norm": float(spectral_norm(mat)),
         }
@@ -107,6 +144,7 @@ class ProjectionRemovalOperator(SemanticOperator):
         return q @ q.T
 
     def apply(self, state: np.ndarray) -> np.ndarray:
+        self._check_last_dim(state, self.basis.shape[0])
         p = self.projector()
         return state @ (np.eye(p.shape[0]) - p)
 
@@ -123,6 +161,10 @@ class ProjectionRemovalOperator(SemanticOperator):
             "persistence": self.persistence,
             "rank": int(self.basis.shape[1]),
             "invertible": False,
+            "form": "h_prime = (I - U U^T) h",
+            "target_shape": [int(self.basis.shape[0])],
+            "parameters_ref": "inline",
+            "parameter_hash": array_sha256(self.basis),
         }
 
 

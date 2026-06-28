@@ -1,6 +1,6 @@
 # Next Steps
 
 - Verify CI.
-- Add real transformer hook adapters.
+- Run optional local real-model smoke tests for Hugging Face and TransformerLens adapters.
 - Emit operator-card markdown alongside JSON.
 - Add adversarial packet fuzzing.

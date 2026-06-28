@@ -1,0 +1,17 @@
+{
+  "description": "Harmless local-only prompt suite for controlled real-model adapter smoke tests.",
+  "target": [
+    {
+      "label": "capital_fact",
+      "prompt": "The capital of France is",
+      "target_token": " Paris"
+    }
+  ],
+  "off_target": [
+    {
+      "label": "arithmetic_fact",
+      "prompt": "2 + 2 =",
+      "target_token": " 4"
+    }
+  ]
+}
