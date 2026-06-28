@@ -1,0 +1,425 @@
+{
+  "accepted": true,
+  "roundtrips": [
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for activation_patch_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9886860023785768,\"norm_delta_max\":0.14999999999993371,\"off_target_degradation_max\":0.0,\"rollback_residue\":5.551115123125783e-17,\"target_success_delta\":0.3203125}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:04ce2cad0686084c3a1c24c505c6fad9b0c5d86ad9981fec7ce122b15501420c\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_activation_patch_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:2e39c4221cffcf015e785ecaa1e064794afe152b988a0e33f5e6698e8312fc5c",
+        "packet_id": "ssp_activation_patch_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_activation_patch_probe",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:04ce2cad0686084c3a1c24c505c6fad9b0c5d86ad9981fec7ce122b15501420c\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for activation_patch_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9886860023785768,\"norm_delta_max\":0.14999999999993371,\"off_target_degradation_max\":0.0,\"rollback_residue\":5.551115123125783e-17,\"target_success_delta\":0.3203125}}"
+        ]
+      },
+      "packet_hash": "sha256:2e39c4221cffcf015e785ecaa1e064794afe152b988a0e33f5e6698e8312fc5c",
+      "packet_id": "ssp_activation_patch_probe",
+      "roundtrip_hash": "sha256:2e39c4221cffcf015e785ecaa1e064794afe152b988a0e33f5e6698e8312fc5c",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for low_rank_operator_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":1.1,\"spectral_radius_max\":1.05},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9998638825927529,\"norm_delta_max\":0.01871778163047479,\"rollback_residue\":6.106226635438361e-16}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"},\"operator\":{\"form\":\"h_prime = h + alpha * V U^T h\",\"parameter_hash\":\"sha256:60c47517b398fbdbc2d31cb60bc0e47a2582648f4cfcb53c3991ba6ba89fca89\",\"parameters_ref\":\"inline\",\"rank\":3},\"operator_type\":\"activation_low_rank\",\"packet_id\":\"ssp_low_rank_operator_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:52afe3ee82e4bf17a6e674a1922cd1e876004d0a61326ab0669971ee28dfc4a8",
+        "packet_id": "ssp_low_rank_operator_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_low_rank_operator_probe",
+          "activation_low_rank",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * V U^T h\",\"parameter_hash\":\"sha256:60c47517b398fbdbc2d31cb60bc0e47a2582648f4cfcb53c3991ba6ba89fca89\",\"parameters_ref\":\"inline\",\"rank\":3}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":1.1,\"spectral_radius_max\":1.05}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for low_rank_operator_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9998638825927529,\"norm_delta_max\":0.01871778163047479,\"rollback_residue\":6.106226635438361e-16}}"
+        ]
+      },
+      "packet_hash": "sha256:52afe3ee82e4bf17a6e674a1922cd1e876004d0a61326ab0669971ee28dfc4a8",
+      "packet_id": "ssp_low_rank_operator_probe",
+      "roundtrip_hash": "sha256:52afe3ee82e4bf17a6e674a1922cd1e876004d0a61326ab0669971ee28dfc4a8",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for norm_drift_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9949874393852146,\"norm_delta_max\":0.09999999999998635}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_norm_drift_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:f93c787e9c88bacdfb82125b73105297b9987c42d578c188a7a6252605c24703",
+        "packet_id": "ssp_norm_drift_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_norm_drift_probe",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for norm_drift_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9949874393852146,\"norm_delta_max\":0.09999999999998635}}"
+        ]
+      },
+      "packet_hash": "sha256:f93c787e9c88bacdfb82125b73105297b9987c42d578c188a7a6252605c24703",
+      "packet_id": "ssp_norm_drift_probe",
+      "roundtrip_hash": "sha256:f93c787e9c88bacdfb82125b73105297b9987c42d578c188a7a6252605c24703",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for spectral_radius_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"},\"operator\":{\"form\":\"h_prime = h + alpha * V U^T h\",\"parameter_hash\":\"sha256:4555a2cfa33ca4d5d9f62fe84519b4e35e899423edce3c6bdc445b69fa347832\",\"parameters_ref\":\"inline\",\"rank\":2},\"operator_type\":\"activation_low_rank\",\"packet_id\":\"ssp_spectral_radius_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[24],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:76fdebe2865a11585f7b9be2ff9f67537fd97c169cecc0558a4dc3c488b83826",
+        "packet_id": "ssp_spectral_radius_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_spectral_radius_probe",
+          "activation_low_rank",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[24],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * V U^T h\",\"parameter_hash\":\"sha256:4555a2cfa33ca4d5d9f62fe84519b4e35e899423edce3c6bdc445b69fa347832\",\"parameters_ref\":\"inline\",\"rank\":2}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for spectral_radius_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{}}"
+        ]
+      },
+      "packet_hash": "sha256:76fdebe2865a11585f7b9be2ff9f67537fd97c169cecc0558a4dc3c488b83826",
+      "packet_id": "ssp_spectral_radius_probe",
+      "roundtrip_hash": "sha256:76fdebe2865a11585f7b9be2ff9f67537fd97c169cecc0558a4dc3c488b83826",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for pseudospectrum_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":5.0,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"},\"operator\":{\"form\":\"block_rotation_scaling\",\"parameter_hash\":\"sha256:68ff8e3dfa7c735db43c27871c6d728eafc64eb693ee493c6e37c985a3c0cd80\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"synthetic_linear_dynamics\",\"packet_id\":\"ssp_pseudospectrum_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[12],\"state_type\":\"linear_state\",\"stream\":\"state\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\",\"pseudospectrum_probe\"],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:b53228721065868ceb75c908b8acd4ab1deccf3796f7679b392b427d2ae8768a",
+        "packet_id": "ssp_pseudospectrum_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_pseudospectrum_probe",
+          "synthetic_linear_dynamics",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[12],\"state_type\":\"linear_state\",\"stream\":\"state\"}",
+          "ephemeral",
+          "{\"form\":\"block_rotation_scaling\",\"parameter_hash\":\"sha256:68ff8e3dfa7c735db43c27871c6d728eafc64eb693ee493c6e37c985a3c0cd80\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":5.0,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\",\"pseudospectrum_probe\"],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for pseudospectrum_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{}}"
+        ]
+      },
+      "packet_hash": "sha256:b53228721065868ceb75c908b8acd4ab1deccf3796f7679b392b427d2ae8768a",
+      "packet_id": "ssp_pseudospectrum_probe",
+      "roundtrip_hash": "sha256:b53228721065868ceb75c908b8acd4ab1deccf3796f7679b392b427d2ae8768a",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for causal_locality_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.25,\"target_metric\":\"target_margin_delta\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:a48d97006fc828a7265b1d5567c01fc60cacb2dd11b592b35cfb2d06ee9238b9\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_causal_locality_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":3,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[48],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:3f405811dee6bdf1f7945b943248771603e48f3079061a21ff2a5eead35f139b",
+        "packet_id": "ssp_causal_locality_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_causal_locality_probe",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":3,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[48],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:a48d97006fc828a7265b1d5567c01fc60cacb2dd11b592b35cfb2d06ee9238b9\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.25,\"target_metric\":\"target_margin_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for causal_locality_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{}}"
+        ]
+      },
+      "packet_hash": "sha256:3f405811dee6bdf1f7945b943248771603e48f3079061a21ff2a5eead35f139b",
+      "packet_id": "ssp_causal_locality_probe",
+      "roundtrip_hash": "sha256:3f405811dee6bdf1f7945b943248771603e48f3079061a21ff2a5eead35f139b",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for off_target_regression_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"off_target_degradation_max\":0.0}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.2,\"target_metric\":\"target_margin_delta\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_off_target_regression_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:443adcdd26598d3db39103de5d9b760631909fc2c06d91f9d4af343b33c99ef0",
+        "packet_id": "ssp_off_target_regression_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_off_target_regression_probe",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.2,\"target_metric\":\"target_margin_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for off_target_regression_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"off_target_degradation_max\":0.0}}"
+        ]
+      },
+      "packet_hash": "sha256:443adcdd26598d3db39103de5d9b760631909fc2c06d91f9d4af343b33c99ef0",
+      "packet_id": "ssp_off_target_regression_probe",
+      "roundtrip_hash": "sha256:443adcdd26598d3db39103de5d9b760631909fc2c06d91f9d4af343b33c99ef0",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for rollback_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"rollback_residue\":0.0}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_rollback_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:5e80677bbadc9703b6db4f0c062fda715ad2bd5e6ffc93aa05aab67b5745f25b",
+        "packet_id": "ssp_rollback_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_rollback_probe",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"accepted\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for rollback_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"rollback_residue\":0.0}}"
+        ]
+      },
+      "packet_hash": "sha256:5e80677bbadc9703b6db4f0c062fda715ad2bd5e6ffc93aa05aab67b5745f25b",
+      "packet_id": "ssp_rollback_probe",
+      "roundtrip_hash": "sha256:5e80677bbadc9703b6db4f0c062fda715ad2bd5e6ffc93aa05aab67b5745f25b",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for operator_vs_text_benchmark.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"off_target_degradation_max\":0.0}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"operator_absolute_advantage\"},\"operator\":{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"activation_additive\",\"packet_id\":\"ssp_operator_vs_text_benchmark\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:fcc2f232030e71939fd0482aa21b2ec77368f77c923e7a3375f9afb7346b74f7",
+        "packet_id": "ssp_operator_vs_text_benchmark",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_operator_vs_text_benchmark",
+          "activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v\",\"parameter_hash\":\"sha256:d728d0e51fe7e419a19b0a2155b263d3f5fbd76bc5c727d0fc55bf3c1fcf4d26\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"operator_absolute_advantage\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for operator_vs_text_benchmark.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"off_target_degradation_max\":0.0}}"
+        ]
+      },
+      "packet_hash": "sha256:fcc2f232030e71939fd0482aa21b2ec77368f77c923e7a3375f9afb7346b74f7",
+      "packet_id": "ssp_operator_vs_text_benchmark",
+      "roundtrip_hash": "sha256:fcc2f232030e71939fd0482aa21b2ec77368f77c923e7a3375f9afb7346b74f7",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for koopman_dynamics_message_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":5.0,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"one_step_mse_improvement\"},\"operator\":{\"form\":\"x_next = x @ A_hat\",\"parameter_hash\":\"sha256:d8234f1d3121bbdfe364c94f116c7669c4fbc1bf368aae8ed6d465dc1110abe8\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"local_dynamics\",\"packet_id\":\"ssp_koopman_dynamics_message_probe\",\"persistence\":\"removable\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[2],\"state_type\":\"dynamics_state\",\"stream\":\"trajectory\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\",\"pseudospectrum_probe\"],\"unit_tests\":[]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:02bb0d1f81051c2f6d9ee9381c7bdedf440823be2543e07bfa1a666911741c49",
+        "packet_id": "ssp_koopman_dynamics_message_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_koopman_dynamics_message_probe",
+          "local_dynamics",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[2],\"state_type\":\"dynamics_state\",\"stream\":\"trajectory\"}",
+          "removable",
+          "{\"form\":\"x_next = x @ A_hat\",\"parameter_hash\":\"sha256:d8234f1d3121bbdfe364c94f116c7669c4fbc1bf368aae8ed6d465dc1110abe8\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":5.0,\"rollback_residue_max\":null,\"sigma_max\":1.1,\"spectral_radius_max\":1.05}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"one_step_mse_improvement\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\",\"pseudospectrum_probe\"],\"unit_tests\":[]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for koopman_dynamics_message_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{}}"
+        ]
+      },
+      "packet_hash": "sha256:02bb0d1f81051c2f6d9ee9381c7bdedf440823be2543e07bfa1a666911741c49",
+      "packet_id": "ssp_koopman_dynamics_message_probe",
+      "roundtrip_hash": "sha256:02bb0d1f81051c2f6d9ee9381c7bdedf440823be2543e07bfa1a666911741c49",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for proof_state_surgery_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"proof_closed\"},\"operator\":{\"form\":\"intro; exact assumption\",\"parameter_hash\":\"sha256:1e99f7aef2c8e96a97e3d39d20127d15d8114736d6cc5ecab482897e5535adc8\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"proof_state_transition\",\"packet_id\":\"ssp_proof_state_surgery_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"synthetic_probe_suite\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[1],\"state_type\":\"proof_state\",\"stream\":\"proof_stack\"},\"verifier\":{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"proof_state_surgery_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:20b23583f8e2dc70670fb10faca09c115efab650c9d3631ddc0677cf05b5ef5b",
+        "packet_id": "ssp_proof_state_surgery_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_proof_state_surgery_probe",
+          "proof_state_transition",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[1],\"state_type\":\"proof_state\",\"stream\":\"proof_stack\"}",
+          "ephemeral",
+          "{\"form\":\"intro; exact assumption\",\"parameter_hash\":\"sha256:1e99f7aef2c8e96a97e3d39d20127d15d8114736d6cc5ecab482897e5535adc8\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":null,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":null,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":null,\"target_metric\":\"proof_closed\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"proof_state_surgery_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for proof_state_surgery_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{}}"
+        ]
+      },
+      "packet_hash": "sha256:20b23583f8e2dc70670fb10faca09c115efab650c9d3631ddc0677cf05b5ef5b",
+      "packet_id": "ssp_proof_state_surgery_probe",
+      "roundtrip_hash": "sha256:20b23583f8e2dc70670fb10faca09c115efab650c9d3631ddc0677cf05b5ef5b",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for kv_cache_surgery_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9888102735743266,\"norm_delta_max\":0.07999999999992001,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":0.07999999999989812}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"},\"operator\":{\"form\":\"K[layer, head, pos] <- K[layer, head, pos] + alpha * v\",\"parameter_hash\":\"sha256:b7667505ac9a5611443868d6b74d09bbbc4e3125a2690b95ea77cb638fe586b4\",\"parameters_ref\":\"inline\",\"rank\":1},\"operator_type\":\"kv_cache_additive\",\"packet_id\":\"ssp_kv_cache_surgery_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"toy_kv_cache_surgery\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":1,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[2,2,8,16],\"state_type\":\"kv_cache\",\"stream\":\"key\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:606a0f170fa3eae3fbd700b6ef2ef581bcd7856e2df74f2dc03766fbb4d02966",
+        "packet_id": "ssp_kv_cache_surgery_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_kv_cache_surgery_probe",
+          "kv_cache_additive",
+          "0.1.0",
+          "{\"layer\":1,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[2,2,8,16],\"state_type\":\"kv_cache\",\"stream\":\"key\"}",
+          "ephemeral",
+          "{\"form\":\"K[layer, head, pos] <- K[layer, head, pos] + alpha * v\",\"parameter_hash\":\"sha256:b7667505ac9a5611443868d6b74d09bbbc4e3125a2690b95ea77cb638fe586b4\",\"parameters_ref\":\"inline\",\"rank\":1}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[\"causal_locality_probe\"],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for kv_cache_surgery_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9888102735743266,\"norm_delta_max\":0.07999999999992001,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":0.07999999999989812}}"
+        ]
+      },
+      "packet_hash": "sha256:606a0f170fa3eae3fbd700b6ef2ef581bcd7856e2df74f2dc03766fbb4d02966",
+      "packet_id": "ssp_kv_cache_surgery_probe",
+      "roundtrip_hash": "sha256:606a0f170fa3eae3fbd700b6ef2ef581bcd7856e2df74f2dc03766fbb4d02966",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for lora_adapter_dry_run_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":1.1,\"spectral_radius_max\":1.05},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9997639353655692,\"norm_delta_max\":0.07772968007691004,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":0.0617394716432802,\"weight_fingerprint_changed\":false}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"},\"operator\":{\"form\":\"W_runtime = W + alpha/rank * B A; W is restored/unmodified after context\",\"parameter_hash\":\"sha256:0a8a65f70e61ce0bca8f2eb0c54fd56758401509d1bcf4c24499a9635597913f\",\"parameters_ref\":\"inline\",\"rank\":2},\"operator_type\":\"lora_adapter_dry_run\",\"packet_id\":\"ssp_lora_adapter_dry_run_probe\",\"persistence\":\"removable\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":false},\"preconditions\":{\"allowed_tasks\":[\"removable_lora_adapter_dry_run\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64,64],\"state_type\":\"adapter_delta\",\"stream\":\"linear_weight\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\",\"real_model_no_weight_mutation\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:7ca90b2f3f916f512d9685142ab25ba16edeb3375ddbf324ab201d2fe737c093",
+        "packet_id": "ssp_lora_adapter_dry_run_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_lora_adapter_dry_run_probe",
+          "lora_adapter_dry_run",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64,64],\"state_type\":\"adapter_delta\",\"stream\":\"linear_weight\"}",
+          "removable",
+          "{\"form\":\"W_runtime = W + alpha/rank * B A; W is restored/unmodified after context\",\"parameter_hash\":\"sha256:0a8a65f70e61ce0bca8f2eb0c54fd56758401509d1bcf4c24499a9635597913f\",\"parameters_ref\":\"inline\",\"rank\":2}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":1.1,\"spectral_radius_max\":1.05}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[\"spectral_radius_probe\"],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\",\"real_model_no_weight_mutation\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for lora_adapter_dry_run_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9997639353655692,\"norm_delta_max\":0.07772968007691004,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":0.0617394716432802,\"weight_fingerprint_changed\":false}}"
+        ]
+      },
+      "packet_hash": "sha256:7ca90b2f3f916f512d9685142ab25ba16edeb3375ddbf324ab201d2fe737c093",
+      "packet_id": "ssp_lora_adapter_dry_run_probe",
+      "roundtrip_hash": "sha256:7ca90b2f3f916f512d9685142ab25ba16edeb3375ddbf324ab201d2fe737c093",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for cross_checkpoint_transfer_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9871170230062709,\"cross_model_transfer_passed\":true,\"norm_delta_max\":0.15999999999997816,\"off_target_degradation_max\":0.0,\"rollback_residue\":5.551115123125783e-17,\"target_success_delta\":0.14692325090331795}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"},\"operator\":{\"form\":\"h_prime = h + alpha * v transferred across deterministic checkpoint fixtures\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":1},\"operator_type\":\"cross_checkpoint_activation_additive\",\"packet_id\":\"ssp_cross_checkpoint_transfer_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"cross_checkpoint_transfer_validation\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:f05c85c234570a21bd678aa2dd90afdfdd1322f91288d1576177376aa8ba4504",
+        "packet_id": "ssp_cross_checkpoint_transfer_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_cross_checkpoint_transfer_probe",
+          "cross_checkpoint_activation_additive",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[64],\"state_type\":\"activation_stream\",\"stream\":\"residual\"}",
+          "ephemeral",
+          "{\"form\":\"h_prime = h + alpha * v transferred across deterministic checkpoint fixtures\",\"parameter_hash\":\"sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d\",\"parameters_ref\":\"inline\",\"rank\":1}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for cross_checkpoint_transfer_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":0.9871170230062709,\"cross_model_transfer_passed\":true,\"norm_delta_max\":0.15999999999997816,\"off_target_degradation_max\":0.0,\"rollback_residue\":5.551115123125783e-17,\"target_success_delta\":0.14692325090331795}}"
+        ]
+      },
+      "packet_hash": "sha256:f05c85c234570a21bd678aa2dd90afdfdd1322f91288d1576177376aa8ba4504",
+      "packet_id": "ssp_cross_checkpoint_transfer_probe",
+      "roundtrip_hash": "sha256:f05c85c234570a21bd678aa2dd90afdfdd1322f91288d1576177376aa8ba4504",
+      "roundtrip_ok": true
+    },
+    {
+      "aether": {
+        "canonical_packet_json": "{\"audit\":{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for adversarial_packet_fuzz_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]},\"bounds\":{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null},\"evidence\":{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":1.0,\"norm_delta_max\":0.0,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":1.0}},\"forbidden_effects\":[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"],\"intended_effect\":{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"},\"operator\":{\"form\":\"validate malformed and forbidden packet families through the central policy gate\",\"parameter_hash\":\"sha256:adversarial_packet_fuzz_catalog_v1\",\"parameters_ref\":\"inline\",\"rank\":null},\"operator_type\":\"adversarial_packet_fuzzing\",\"packet_id\":\"ssp_adversarial_packet_fuzz_probe\",\"persistence\":\"ephemeral\",\"postconditions\":{\"accepted\":true,\"forbidden_effect_evidence_present\":null,\"hook_cleanup_ok\":null,\"notes\":[],\"per_case_evidence_present\":null,\"status\":\"pass\",\"weight_fingerprint_changed\":null},\"preconditions\":{\"allowed_tasks\":[\"packet_policy_fuzzing\"],\"backend\":\"synthetic\",\"deterministic_seed\":0,\"local_files_only\":true,\"model_name_or_path\":null,\"requires_sandbox\":true},\"rollback\":{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"},\"target\":{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[1],\"state_type\":\"packet_policy\",\"stream\":\"validator\"},\"verifier\":{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]},\"version\":\"0.1.0\"}",
+        "format": "AETHER-CSS-v1",
+        "packet_hash": "sha256:77decc4bdf1592c56e52502306a2367fa9c0845d312b20698ad28e8635970246",
+        "packet_id": "ssp_adversarial_packet_fuzz_probe",
+        "tuple": [
+          "AETHER-CSS-v1",
+          "ssp_adversarial_packet_fuzz_probe",
+          "adversarial_packet_fuzzing",
+          "0.1.0",
+          "{\"layer\":0,\"model_family\":\"synthetic-linear-receiver\",\"receiver_id\":\"synthetic_receiver\",\"shape\":[1],\"state_type\":\"packet_policy\",\"stream\":\"validator\"}",
+          "ephemeral",
+          "{\"form\":\"validate malformed and forbidden packet families through the central policy gate\",\"parameter_hash\":\"sha256:adversarial_packet_fuzz_catalog_v1\",\"parameters_ref\":\"inline\",\"rank\":null}",
+          "{\"cosine_drift_min\":0.98,\"delta_norm_max\":1.0,\"off_target_degradation_max\":0.02,\"pseudospectral_proxy_max\":null,\"rollback_residue_max\":1e-09,\"sigma_max\":null,\"spectral_radius_max\":null}",
+          "{\"description\":\"Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.\",\"minimum_delta\":0.05,\"target_metric\":\"target_success_delta\"}",
+          "[\"off_target_degradation_gt_0.02\",\"cosine_drift_below_0.98\",\"rollback_residue_gt_1e-9\",\"unstable_spectral_or_pseudospectral_growth\"]",
+          "{\"required\":true,\"residue_metric\":\"rollback_residue\",\"strategy\":\"copy_restore_context\"}",
+          "{\"behavioral_tests\":[\"off_target_regression_probe\",\"activation_patch_probe\"],\"causal_tests\":[],\"spectral_tests\":[],\"unit_tests\":[\"norm_drift_probe\",\"rollback_probe\"]}",
+          "{\"accepted\":true,\"human_rendering\":\"Synthetic certified semantic surgery packet for adversarial_packet_fuzz_probe.\",\"provenance\":\"synthetic-fixture\",\"rejection_reasons\":[]}",
+          "{\"per_case\":{},\"verifier_metrics\":{\"cosine_drift_min\":1.0,\"norm_delta_max\":0.0,\"off_target_degradation_max\":0.0,\"rollback_residue\":0.0,\"target_success_delta\":1.0}}"
+        ]
+      },
+      "packet_hash": "sha256:77decc4bdf1592c56e52502306a2367fa9c0845d312b20698ad28e8635970246",
+      "packet_id": "ssp_adversarial_packet_fuzz_probe",
+      "roundtrip_hash": "sha256:77decc4bdf1592c56e52502306a2367fa9c0845d312b20698ad28e8635970246",
+      "roundtrip_ok": true
+    }
+  ]
+}

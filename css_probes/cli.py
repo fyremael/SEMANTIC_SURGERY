@@ -8,12 +8,21 @@ from pathlib import Path
 
 from .hooks.base import BackendUnavailableError, load_prompt_suite
 from .hooks.registry import list_adapters
+from .packets import (
+    aether_payload,
+    certify_report_payload,
+    extract_packet_payloads,
+    packet_from_dict,
+    stable_hash,
+    validate_report_packets,
+)
 from .probes import PROBE_NAMES, load_probe
 from .probes.real_activation_surgery import load_vector, run_real_activation_surgery
 from .report import (
     default_operator_cards_path,
     probe_payload,
     suite_payload,
+    write_packet_cards,
     write_json_report,
     write_operator_cards,
 )
@@ -68,6 +77,37 @@ def _parse_real_options(args: list[str]) -> dict[str, str]:
     return options
 
 
+def _parse_key_options(args: list[str], command_name: str) -> dict[str, str]:
+    options: dict[str, str] = {}
+    idx = 0
+    while idx < len(args):
+        token = args[idx]
+        if not token.startswith("--"):
+            raise SystemExit(f"unexpected argument for {command_name}: {token}")
+        if idx + 1 >= len(args):
+            raise SystemExit(f"missing value for {token}")
+        options[token[2:]] = args[idx + 1]
+        idx += 2
+    return options
+
+
+def _read_json(path: str | Path) -> dict:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _write_json(payload: dict, path: str | Path) -> Path:
+    out = Path(path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    return out
+
+
+def _require_options(options: dict[str, str], required: list[str], command_name: str) -> None:
+    missing = [name for name in required if name not in options]
+    if missing:
+        raise SystemExit(f"missing required {command_name} option(s): {', '.join('--' + item for item in missing)}")
+
+
 def _run_real_command(args: list[str]) -> int:
     if not args:
         raise SystemExit("missing real command")
@@ -77,13 +117,17 @@ def _run_real_command(args: list[str]) -> int:
             raise SystemExit(f"unexpected argument for real list-adapters: {args[0]}")
         print(json.dumps([availability.__dict__ for availability in list_adapters()], indent=2, sort_keys=True))
         return 0
+    if command == "envelope-audit":
+        return _run_real_activation_command(args, command_name="real envelope-audit")
     if command != "activation-surgery":
         raise SystemExit(f"unknown real command: {command}")
+    return _run_real_activation_command(args, command_name="real activation-surgery")
+
+
+def _run_real_activation_command(args: list[str], command_name: str) -> int:
     options = _parse_real_options(args)
     required = ["backend", "model", "prompt-suite", "layer", "stream", "out"]
-    missing = [name for name in required if name not in options]
-    if missing:
-        raise SystemExit(f"missing required real activation-surgery option(s): {', '.join('--' + item for item in missing)}")
+    _require_options(options, required, command_name)
     from .hooks.base import ActivationSurgeryConfig
 
     try:
@@ -110,6 +154,71 @@ def _run_real_command(args: list[str]) -> int:
     return 0 if result.accepted else 1
 
 
+def _run_packet_command(args: list[str]) -> int:
+    if not args:
+        raise SystemExit("missing packet command")
+    command = args.pop(0)
+    options = _parse_key_options(args, f"packet {command}")
+    _require_options(options, ["in"], f"packet {command}")
+    payload = _read_json(options["in"])
+    if command == "validate":
+        result = validate_report_packets(payload)
+        if "out" in options:
+            _write_json(result, options["out"])
+        else:
+            print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result["accepted"] else 1
+    if command == "render":
+        _require_options(options, ["out"], "packet render")
+        packets = extract_packet_payloads(payload)
+        if not packets:
+            raise SystemExit("no packets found to render")
+        write_packet_cards(packets, options["out"])
+        return 0
+    raise SystemExit(f"unknown packet command: {command}")
+
+
+def _run_certify_command(args: list[str]) -> int:
+    options = _parse_key_options(args, "certify")
+    _require_options(options, ["in"], "certify")
+    payload = certify_report_payload(_read_json(options["in"]))
+    if "out" in options:
+        _write_json(payload, options["out"])
+    else:
+        print(json.dumps(payload, indent=2, sort_keys=True))
+    return 0 if payload["accepted"] else 1
+
+
+def _run_aether_command(args: list[str]) -> int:
+    if not args:
+        raise SystemExit("missing aether command")
+    command = args.pop(0)
+    if command != "roundtrip":
+        raise SystemExit(f"unknown aether command: {command}")
+    options = _parse_key_options(args, "aether roundtrip")
+    _require_options(options, ["in", "out"], "aether roundtrip")
+    packets = extract_packet_payloads(_read_json(options["in"]))
+    if not packets:
+        raise SystemExit("no packets found for AETHER roundtrip")
+    rows = []
+    for packet_payload in packets:
+        packet = packet_from_dict(packet_payload)
+        serialized = aether_payload(packet)
+        decoded = json.loads(serialized["canonical_packet_json"])
+        rows.append(
+            {
+                "packet_id": packet.packet_id,
+                "packet_hash": serialized["packet_hash"],
+                "roundtrip_hash": stable_hash(decoded),
+                "roundtrip_ok": serialized["packet_hash"] == stable_hash(decoded),
+                "aether": serialized,
+            }
+        )
+    payload = {"accepted": all(row["roundtrip_ok"] for row in rows), "roundtrips": rows}
+    _write_json(payload, options["out"])
+    return 0 if payload["accepted"] else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if not args:
@@ -117,6 +226,12 @@ def main(argv: list[str] | None = None) -> int:
     command = args.pop(0)
     if command == "real":
         return _run_real_command(args)
+    if command == "packet":
+        return _run_packet_command(args)
+    if command == "certify":
+        return _run_certify_command(args)
+    if command == "aether":
+        return _run_aether_command(args)
     if command == "list":
         _seed, out, cards_out, positionals = _parse_options(args)
         if out is not None or cards_out is not None:

@@ -1,0 +1,165 @@
+{
+  "accepted": true,
+  "certification_summary": {
+    "coverage": {
+      "level_1_typed": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "norm_drift_probe",
+        "spectral_radius_probe",
+        "pseudospectrum_probe",
+        "causal_locality_probe",
+        "off_target_regression_probe",
+        "rollback_probe",
+        "operator_vs_text_benchmark",
+        "koopman_dynamics_message_probe",
+        "proof_state_surgery_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
+      ],
+      "level_2_bounded": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "norm_drift_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
+      ],
+      "level_3_behavioral": [
+        "activation_patch_probe",
+        "off_target_regression_probe",
+        "operator_vs_text_benchmark",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
+      ],
+      "level_4_causal": [
+        "causal_locality_probe",
+        "off_target_regression_probe",
+        "kv_cache_surgery_probe"
+      ],
+      "level_5_spectral": [
+        "low_rank_operator_probe",
+        "spectral_radius_probe",
+        "pseudospectrum_probe",
+        "koopman_dynamics_message_probe",
+        "lora_adapter_dry_run_probe"
+      ],
+      "level_6_rollback_safe": [
+        "activation_patch_probe",
+        "low_rank_operator_probe",
+        "rollback_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
+      ],
+      "level_7_cross_model_validated": [
+        "cross_checkpoint_transfer_probe"
+      ]
+    },
+    "levels_1_to_7_covered": true,
+    "phase": 1
+  },
+  "packet_summary": {
+    "accepted": true,
+    "num_packets": 15,
+    "packets": [
+      {
+        "accepted": true,
+        "packet_hash": "sha256:2e39c4221cffcf015e785ecaa1e064794afe152b988a0e33f5e6698e8312fc5c",
+        "packet_id": "ssp_activation_patch_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:52afe3ee82e4bf17a6e674a1922cd1e876004d0a61326ab0669971ee28dfc4a8",
+        "packet_id": "ssp_low_rank_operator_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:f93c787e9c88bacdfb82125b73105297b9987c42d578c188a7a6252605c24703",
+        "packet_id": "ssp_norm_drift_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:76fdebe2865a11585f7b9be2ff9f67537fd97c169cecc0558a4dc3c488b83826",
+        "packet_id": "ssp_spectral_radius_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:b53228721065868ceb75c908b8acd4ab1deccf3796f7679b392b427d2ae8768a",
+        "packet_id": "ssp_pseudospectrum_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:3f405811dee6bdf1f7945b943248771603e48f3079061a21ff2a5eead35f139b",
+        "packet_id": "ssp_causal_locality_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:443adcdd26598d3db39103de5d9b760631909fc2c06d91f9d4af343b33c99ef0",
+        "packet_id": "ssp_off_target_regression_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:5e80677bbadc9703b6db4f0c062fda715ad2bd5e6ffc93aa05aab67b5745f25b",
+        "packet_id": "ssp_rollback_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:fcc2f232030e71939fd0482aa21b2ec77368f77c923e7a3375f9afb7346b74f7",
+        "packet_id": "ssp_operator_vs_text_benchmark",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:02bb0d1f81051c2f6d9ee9381c7bdedf440823be2543e07bfa1a666911741c49",
+        "packet_id": "ssp_koopman_dynamics_message_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:20b23583f8e2dc70670fb10faca09c115efab650c9d3631ddc0677cf05b5ef5b",
+        "packet_id": "ssp_proof_state_surgery_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:606a0f170fa3eae3fbd700b6ef2ef581bcd7856e2df74f2dc03766fbb4d02966",
+        "packet_id": "ssp_kv_cache_surgery_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:7ca90b2f3f916f512d9685142ab25ba16edeb3375ddbf324ab201d2fe737c093",
+        "packet_id": "ssp_lora_adapter_dry_run_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:f05c85c234570a21bd678aa2dd90afdfdd1322f91288d1576177376aa8ba4504",
+        "packet_id": "ssp_cross_checkpoint_transfer_probe",
+        "warnings": []
+      },
+      {
+        "accepted": true,
+        "packet_hash": "sha256:77decc4bdf1592c56e52502306a2367fa9c0845d312b20698ad28e8635970246",
+        "packet_id": "ssp_adversarial_packet_fuzz_probe",
+        "warnings": []
+      }
+    ]
+  },
+  "suite": "css-probes"
+}

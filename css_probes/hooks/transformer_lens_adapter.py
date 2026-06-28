@@ -44,6 +44,7 @@ class TransformerLensAdapter:
         before_fingerprint = _model_fingerprint(model)
         target_before = [_case_logprob(model, case, None) for case in config.prompt_suite.target]
         off_before = [_case_logprob(model, case, None) for case in config.prompt_suite.off_target]
+        forbidden_before = [_case_logprob(model, case, None) for case in config.prompt_suite.forbidden]
         vector_values = config.vector
         vector_missing = vector_values is None
         captured_before: list[np.ndarray] = []
@@ -64,6 +65,7 @@ class TransformerLensAdapter:
 
         target_after = [_case_logprob(model, case, (hook_name, patch_hook)) for case in config.prompt_suite.target]
         off_after = [_case_logprob(model, case, (hook_name, patch_hook)) for case in config.prompt_suite.off_target]
+        forbidden_after = [_case_logprob(model, case, (hook_name, patch_hook)) for case in config.prompt_suite.forbidden]
         post_first = _case_logprob(model, config.prompt_suite.target[0], None)
         rollback_residue = abs(post_first - target_before[0])
         after_fingerprint = _model_fingerprint(model)
@@ -71,6 +73,9 @@ class TransformerLensAdapter:
         drift = _activation_drift(captured_before, captured_after)
         target_delta = float(np.mean(target_after) - np.mean(target_before))
         off_delta = float(np.mean(off_after) - np.mean(off_before))
+        target_case_deltas = [float(after - before) for after, before in zip(target_after, target_before)]
+        off_case_deltas = [float(after - before) for after, before in zip(off_after, off_before)]
+        forbidden_case_deltas = [float(after - before) for after, before in zip(forbidden_after, forbidden_before)]
         return RealActivationResult(
             backend=self.name,
             model_family=type(model).__name__,
@@ -81,8 +86,16 @@ class TransformerLensAdapter:
             metrics={
                 "target_token_logprob_delta": target_delta,
                 "target_success_delta": target_delta,
+                "target_case_deltas": _labeled(config.prompt_suite.target, target_case_deltas),
+                "target_case_delta_min": float(min(target_case_deltas)),
                 "off_target_delta": off_delta,
                 "off_target_degradation_max": float(max(0.0, -off_delta)),
+                "off_target_case_deltas": _labeled(config.prompt_suite.off_target, off_case_deltas),
+                "off_target_case_degradation_max": float(max([0.0] + [-value for value in off_case_deltas])),
+                "forbidden_case_deltas": _labeled(config.prompt_suite.forbidden, forbidden_case_deltas),
+                "forbidden_leakage_max": float(max([0.0] + forbidden_case_deltas)),
+                "per_case_evidence_present": True,
+                "forbidden_effect_evidence_present": bool(config.prompt_suite.forbidden),
                 "rollback_residue": float(rollback_residue),
                 "weight_fingerprint_changed": before_fingerprint != after_fingerprint,
                 "hook_cleanup_ok": True,
@@ -99,6 +112,13 @@ class TransformerLensAdapter:
             warnings=["missing_vector_zero_patch"] if vector_missing else [],
             notes=["TransformerLens execution used run_with_hooks scoped to verifier calls."],
         )
+
+    def model_fingerprint(self, model: Any) -> str:
+        return _model_fingerprint(model)
+
+    def resolve_stream(self, model: Any, layer: int, stream: str) -> str:
+        del model
+        return _resolve_tl_hook_name(layer, stream)
 
 
 def _case_logprob(model: Any, case: PromptCase, hook: tuple[str, Any] | None) -> float:
@@ -128,6 +148,13 @@ def _resolve_tl_hook_name(layer: int, stream: str) -> str:
     if stream in {"residual", "resid_post", "hidden", "block"}:
         return f"blocks.{layer}.hook_resid_post"
     return stream
+
+
+def _labeled(cases: list[PromptCase], values: list[float]) -> dict[str, float]:
+    return {
+        case.label or f"case_{idx}": float(value)
+        for idx, (case, value) in enumerate(zip(cases, values))
+    }
 
 
 def _model_fingerprint(model: Any) -> str:

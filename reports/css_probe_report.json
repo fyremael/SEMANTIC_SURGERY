@@ -13,36 +13,58 @@
         "rollback_probe",
         "operator_vs_text_benchmark",
         "koopman_dynamics_message_probe",
-        "proof_state_surgery_probe"
+        "proof_state_surgery_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
       ],
       "level_2_bounded": [
         "activation_patch_probe",
         "low_rank_operator_probe",
-        "norm_drift_probe"
+        "norm_drift_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
       ],
       "level_3_behavioral": [
         "activation_patch_probe",
         "off_target_regression_probe",
-        "operator_vs_text_benchmark"
+        "operator_vs_text_benchmark",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
       ],
       "level_4_causal": [
         "causal_locality_probe",
-        "off_target_regression_probe"
+        "off_target_regression_probe",
+        "kv_cache_surgery_probe"
       ],
       "level_5_spectral": [
         "low_rank_operator_probe",
         "spectral_radius_probe",
         "pseudospectrum_probe",
-        "koopman_dynamics_message_probe"
+        "koopman_dynamics_message_probe",
+        "lora_adapter_dry_run_probe"
       ],
       "level_6_rollback_safe": [
         "activation_patch_probe",
         "low_rank_operator_probe",
-        "rollback_probe"
+        "rollback_probe",
+        "kv_cache_surgery_probe",
+        "lora_adapter_dry_run_probe",
+        "cross_checkpoint_transfer_probe",
+        "adversarial_packet_fuzz_probe"
+      ],
+      "level_7_cross_model_validated": [
+        "cross_checkpoint_transfer_probe"
       ]
     },
     "levels_1_to_6_covered": true,
-    "phase": 0
+    "levels_1_to_7_covered": true,
+    "phase": 1
   },
   "probes": [
     {
@@ -61,11 +83,16 @@
           "level_3_behavioral": true,
           "level_4_causal": false,
           "level_5_spectral": false,
-          "level_6_rollback_safe": true
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "cosine_drift_mean": 0.9891088359141202,
@@ -110,6 +137,16 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9886860023785768,
+            "norm_delta_max": 0.14999999999993371,
+            "off_target_degradation_max": 0.0,
+            "rollback_residue": 5.551115123125783e-17,
+            "target_success_delta": 0.3203125
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -132,8 +169,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -203,11 +242,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": true,
-          "level_6_rollback_safe": true
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "cosine_drift_mean": 0.9999651008413627,
@@ -254,6 +298,14 @@
           "sigma_max": 1.1,
           "spectral_radius_max": 1.05
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9998638825927529,
+            "norm_delta_max": 0.01871778163047479,
+            "rollback_residue": 6.106226635438361e-16
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -276,8 +328,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -345,11 +399,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": false,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "cosine_drift_mean": 0.99510852217506,
@@ -389,6 +448,13 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9949874393852146,
+            "norm_delta_max": 0.09999999999998635
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -411,8 +477,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -473,11 +541,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": true,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "non_normality_fro": 0.005996229799055704,
@@ -517,6 +590,10 @@
           "sigma_max": 1.1,
           "spectral_radius_max": 1.05
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {}
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -539,8 +616,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -602,11 +681,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": true,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "non_normality_fro": 2.0921834027853176e-17,
@@ -643,6 +727,10 @@
           "sigma_max": 1.1,
           "spectral_radius_max": 1.05
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {}
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -656,7 +744,7 @@
         },
         "operator": {
           "form": "block_rotation_scaling",
-          "parameter_hash": "sha256:f6390c75b0aa46435d744411daa575bb230c3064cfd857960e46697deeed7afe",
+          "parameter_hash": "sha256:68ff8e3dfa7c735db43c27871c6d728eafc64eb693ee493c6e37c985a3c0cd80",
           "parameters_ref": "inline",
           "rank": null
         },
@@ -665,8 +753,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -730,11 +820,16 @@
           "level_3_behavioral": false,
           "level_4_causal": true,
           "level_5_spectral": false,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "best_layer": 3,
@@ -776,6 +871,10 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {}
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -798,8 +897,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -863,11 +964,16 @@
           "level_3_behavioral": true,
           "level_4_causal": true,
           "level_5_spectral": false,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "causal_locality_score": 299516272965.56256,
@@ -905,6 +1011,12 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "off_target_degradation_max": 0.0
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -927,8 +1039,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -993,11 +1107,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": false,
-          "level_6_rollback_safe": true
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "inside_delta": 0.07945733371660237,
@@ -1033,6 +1152,12 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "rollback_residue": 0.0
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -1055,8 +1180,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -1117,11 +1244,16 @@
           "level_3_behavioral": true,
           "level_4_causal": false,
           "level_5_spectral": false,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "additive_operator_off_target_delta": 1.8856444183867893e-15,
@@ -1179,6 +1311,12 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "off_target_degradation_max": 0.0
+          }
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -1201,8 +1339,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -1264,11 +1404,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": true,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "koopman_mse": 4.6859843104640945e-05,
@@ -1311,6 +1456,10 @@
           "sigma_max": 1.1,
           "spectral_radius_max": 1.05
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {}
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -1333,8 +1482,10 @@
         "persistence": "removable",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -1398,11 +1549,16 @@
           "level_3_behavioral": false,
           "level_4_causal": false,
           "level_5_spectral": false,
-          "level_6_rollback_safe": false
+          "level_6_rollback_safe": false,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
         },
         "packet_valid": true,
         "packet_warnings": [],
-        "phase": 0
+        "phase": 1
       },
       "metrics": {
         "checker_accepted": true,
@@ -1440,6 +1596,10 @@
           "sigma_max": null,
           "spectral_radius_max": null
         },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {}
+        },
         "forbidden_effects": [
           "off_target_degradation_gt_0.02",
           "cosine_drift_below_0.98",
@@ -1462,8 +1622,10 @@
         "persistence": "ephemeral",
         "postconditions": {
           "accepted": true,
+          "forbidden_effect_evidence_present": null,
           "hook_cleanup_ok": null,
           "notes": [],
+          "per_case_evidence_present": null,
           "status": "pass",
           "weight_fingerprint_changed": null
         },
@@ -1509,12 +1671,727 @@
         "proof_closed_required": true
       },
       "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_3_behavioral",
+          "level_4_causal",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": true,
+          "level_4_causal": true,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 1
+      },
+      "metrics": {
+        "causal_locality_score": 0.9999999999962479,
+        "cosine_drift_mean": 0.999650321047544,
+        "cosine_drift_min": 0.9888102735743266,
+        "kv_cache_copy_used": true,
+        "kv_cache_shape_match": true,
+        "norm_delta_max": 0.07999999999992001,
+        "norm_delta_mean": 0.0024999999999975003,
+        "off_target_degradation_max": 0.0,
+        "relative_norm_delta_max": 0.1533400542867908,
+        "relative_norm_delta_mean": 0.004791876696462212,
+        "rollback_residue": 0.0,
+        "target_margin_delta": 0.07999999999989812,
+        "target_success_delta": 0.07999999999989812
+      },
+      "name": "kv_cache_surgery_probe",
+      "notes": [],
+      "operator": {
+        "allowed_tasks": [
+          "toy_kv_cache_surgery"
+        ],
+        "declared_layer": 1,
+        "form": "K[layer, head, pos] <- K[layer, head, pos] + alpha * v",
+        "operator_type": "kv_cache_additive",
+        "parameter_hash": "sha256:b7667505ac9a5611443868d6b74d09bbbc4e3125a2690b95ea77cb638fe586b4",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": 1,
+        "state_type": "kv_cache",
+        "stream": "key",
+        "target_shape": [
+          2,
+          2,
+          8,
+          16
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for kv_cache_surgery_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9888102735743266,
+            "norm_delta_max": 0.07999999999992001,
+            "off_target_degradation_max": 0.0,
+            "rollback_residue": 0.0,
+            "target_success_delta": 0.07999999999989812
+          }
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.05,
+          "target_metric": "target_success_delta"
+        },
+        "operator": {
+          "form": "K[layer, head, pos] <- K[layer, head, pos] + alpha * v",
+          "parameter_hash": "sha256:b7667505ac9a5611443868d6b74d09bbbc4e3125a2690b95ea77cb638fe586b4",
+          "parameters_ref": "inline",
+          "rank": 1
+        },
+        "operator_type": "kv_cache_additive",
+        "packet_id": "ssp_kv_cache_surgery_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "forbidden_effect_evidence_present": null,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "per_case_evidence_present": null,
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "toy_kv_cache_surgery"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 1,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            2,
+            2,
+            8,
+            16
+          ],
+          "state_type": "kv_cache",
+          "stream": "key"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [
+            "causal_locality_probe"
+          ],
+          "spectral_tests": [],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "causal_locality_score_min": 0.99,
+        "cosine_drift_min": 0.98,
+        "norm_delta_max": 1.0,
+        "off_target_degradation_max": 0.02,
+        "rollback_residue_max": 1e-09,
+        "target_success_delta_min": 0.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_3_behavioral",
+          "level_5_spectral",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": true,
+          "level_4_causal": false,
+          "level_5_spectral": true,
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 1
+      },
+      "metrics": {
+        "adapter_unload_residue": 0.0,
+        "cosine_drift_mean": 0.999785324855527,
+        "cosine_drift_min": 0.9997639353655692,
+        "merge_attempted": false,
+        "norm_delta_max": 0.07772968007691004,
+        "norm_delta_mean": 0.061739471643289176,
+        "off_target_degradation_max": 0.0,
+        "off_target_delta": 3.3480163086352377e-16,
+        "relative_norm_delta_max": 0.039479008221969994,
+        "relative_norm_delta_mean": 0.036370917522819735,
+        "rollback_residue": 0.0,
+        "save_pretrained_called": false,
+        "sigma_max": 1.0449999999999866,
+        "spectral_radius": 1.0449999999999864,
+        "target_margin_delta": 0.0617394716432802,
+        "target_success_delta": 0.0617394716432802,
+        "weight_fingerprint_changed": false
+      },
+      "name": "lora_adapter_dry_run_probe",
+      "notes": [],
+      "operator": {
+        "allowed_tasks": [
+          "removable_lora_adapter_dry_run"
+        ],
+        "declared_layer": 0,
+        "form": "W_runtime = W + alpha/rank * B A; W is restored/unmodified after context",
+        "operator_type": "lora_adapter_dry_run",
+        "parameter_hash": "sha256:0a8a65f70e61ce0bca8f2eb0c54fd56758401509d1bcf4c24499a9635597913f",
+        "parameters_ref": "inline",
+        "persistence": "removable",
+        "rank": 2,
+        "state_type": "adapter_delta",
+        "stream": "linear_weight",
+        "target_shape": [
+          64,
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for lora_adapter_dry_run_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": 1.1,
+          "spectral_radius_max": 1.05
+        },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9997639353655692,
+            "norm_delta_max": 0.07772968007691004,
+            "off_target_degradation_max": 0.0,
+            "rollback_residue": 0.0,
+            "target_success_delta": 0.0617394716432802,
+            "weight_fingerprint_changed": false
+          }
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.05,
+          "target_metric": "target_success_delta"
+        },
+        "operator": {
+          "form": "W_runtime = W + alpha/rank * B A; W is restored/unmodified after context",
+          "parameter_hash": "sha256:0a8a65f70e61ce0bca8f2eb0c54fd56758401509d1bcf4c24499a9635597913f",
+          "parameters_ref": "inline",
+          "rank": 2
+        },
+        "operator_type": "lora_adapter_dry_run",
+        "packet_id": "ssp_lora_adapter_dry_run_probe",
+        "persistence": "removable",
+        "postconditions": {
+          "accepted": true,
+          "forbidden_effect_evidence_present": null,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "per_case_evidence_present": null,
+          "status": "pass",
+          "weight_fingerprint_changed": false
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "removable_lora_adapter_dry_run"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64,
+            64
+          ],
+          "state_type": "adapter_delta",
+          "stream": "linear_weight"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [
+            "spectral_radius_probe"
+          ],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe",
+            "real_model_no_weight_mutation"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "norm_delta_max": 1.0,
+        "off_target_degradation_max": 0.02,
+        "rollback_residue_max": 1e-09,
+        "sigma_max": 1.1,
+        "spectral_radius_max": 1.05,
+        "target_success_delta_min": 0.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_3_behavioral",
+          "level_6_rollback_safe",
+          "level_7_cross_model_validated"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": true,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": true
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 1
+      },
+      "metrics": {
+        "cosine_drift_mean": 0.9875807438382899,
+        "cosine_drift_min": 0.9871170230062709,
+        "cross_model_transfer_deltas": {
+          "checkpoint_0": 0.14760576922841068,
+          "checkpoint_1": 0.14802243416151523,
+          "checkpoint_2": 0.145141549320028
+        },
+        "cross_model_transfer_min_delta": 0.145141549320028,
+        "cross_model_transfer_passed": true,
+        "norm_delta_max": 0.15999999999997816,
+        "norm_delta_mean": 0.15999999999997813,
+        "num_checkpoints": 3,
+        "off_target_degradation_max": 0.0,
+        "relative_norm_delta_max": 0.15999999999984454,
+        "relative_norm_delta_mean": 0.15999999999983835,
+        "rollback_residue": 5.551115123125783e-17,
+        "target_margin_delta": 0.14692325090331795,
+        "target_success_delta": 0.14692325090331795
+      },
+      "name": "cross_checkpoint_transfer_probe",
+      "notes": [],
+      "operator": {
+        "allowed_tasks": [
+          "cross_checkpoint_transfer_validation"
+        ],
+        "declared_layer": 0,
+        "form": "h_prime = h + alpha * v transferred across deterministic checkpoint fixtures",
+        "operator_type": "cross_checkpoint_activation_additive",
+        "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": 1,
+        "state_type": "activation_stream",
+        "stream": "residual",
+        "target_shape": [
+          64
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for cross_checkpoint_transfer_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 0.9871170230062709,
+            "cross_model_transfer_passed": true,
+            "norm_delta_max": 0.15999999999997816,
+            "off_target_degradation_max": 0.0,
+            "rollback_residue": 5.551115123125783e-17,
+            "target_success_delta": 0.14692325090331795
+          }
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.05,
+          "target_metric": "target_success_delta"
+        },
+        "operator": {
+          "form": "h_prime = h + alpha * v transferred across deterministic checkpoint fixtures",
+          "parameter_hash": "sha256:70cee8596d717329cffa885c6b7d18aa6c260e6c73f0b362f25859ed63f2525d",
+          "parameters_ref": "inline",
+          "rank": 1
+        },
+        "operator_type": "cross_checkpoint_activation_additive",
+        "packet_id": "ssp_cross_checkpoint_transfer_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "forbidden_effect_evidence_present": null,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "per_case_evidence_present": null,
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "cross_checkpoint_transfer_validation"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            64
+          ],
+          "state_type": "activation_stream",
+          "stream": "residual"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "cross_model_transfer_min_delta": 0.05,
+        "norm_delta_max": 1.0,
+        "off_target_degradation_max": 0.02,
+        "rollback_residue_max": 1e-09,
+        "target_success_delta_min": 0.05
+      },
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "artifacts": [],
+      "certificate": {
+        "covered_levels": [
+          "level_1_typed",
+          "level_2_bounded",
+          "level_3_behavioral",
+          "level_6_rollback_safe"
+        ],
+        "levels": {
+          "level_1_typed": true,
+          "level_2_bounded": true,
+          "level_3_behavioral": true,
+          "level_4_causal": false,
+          "level_5_spectral": false,
+          "level_6_rollback_safe": true,
+          "level_7_cross_model_validated": false
+        },
+        "packet_policy": {
+          "accepted": true,
+          "warnings": []
+        },
+        "packet_valid": true,
+        "packet_warnings": [],
+        "phase": 1
+      },
+      "metrics": {
+        "adversarial_rejection_reasons": {
+          "global": [
+            "missing_verifier_list",
+            "global_operator_scope_rejected"
+          ],
+          "missing_rollback": [
+            "missing_rollback_plan",
+            "missing_verifier_list",
+            "rollback_not_required"
+          ],
+          "network": [
+            "missing_verifier_list",
+            "network_or_download_forbidden:allow_downloads"
+          ],
+          "persistent": [
+            "phase0_rejected_persistence:persistent",
+            "missing_verifier_list"
+          ],
+          "unbounded": [
+            "missing_verifier_list",
+            "invalid_target_shape"
+          ]
+        },
+        "cases_generated": 5,
+        "cases_rejected": 5,
+        "cosine_drift_min": 1.0,
+        "norm_delta_max": 0.0,
+        "off_target_degradation_max": 0.0,
+        "rejection_rate": 1.0,
+        "required_rejection_reasons_present": true,
+        "rollback_residue": 0.0,
+        "target_success_delta": 1.0
+      },
+      "name": "adversarial_packet_fuzz_probe",
+      "notes": [],
+      "operator": {
+        "allowed_tasks": [
+          "packet_policy_fuzzing"
+        ],
+        "declared_layer": 0,
+        "form": "validate malformed and forbidden packet families through the central policy gate",
+        "operator_type": "adversarial_packet_fuzzing",
+        "parameter_hash": "sha256:adversarial_packet_fuzz_catalog_v1",
+        "parameters_ref": "inline",
+        "persistence": "ephemeral",
+        "rank": null,
+        "state_type": "packet_policy",
+        "stream": "validator",
+        "target_shape": [
+          1
+        ]
+      },
+      "packet": {
+        "audit": {
+          "accepted": true,
+          "human_rendering": "Synthetic certified semantic surgery packet for adversarial_packet_fuzz_probe.",
+          "provenance": "synthetic-fixture",
+          "rejection_reasons": []
+        },
+        "bounds": {
+          "cosine_drift_min": 0.98,
+          "delta_norm_max": 1.0,
+          "off_target_degradation_max": 0.02,
+          "pseudospectral_proxy_max": null,
+          "rollback_residue_max": 1e-09,
+          "sigma_max": null,
+          "spectral_radius_max": null
+        },
+        "evidence": {
+          "per_case": {},
+          "verifier_metrics": {
+            "cosine_drift_min": 1.0,
+            "norm_delta_max": 0.0,
+            "off_target_degradation_max": 0.0,
+            "rollback_residue": 0.0,
+            "target_success_delta": 1.0
+          }
+        },
+        "forbidden_effects": [
+          "off_target_degradation_gt_0.02",
+          "cosine_drift_below_0.98",
+          "rollback_residue_gt_1e-9",
+          "unstable_spectral_or_pseudospectral_growth"
+        ],
+        "intended_effect": {
+          "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+          "minimum_delta": 0.05,
+          "target_metric": "target_success_delta"
+        },
+        "operator": {
+          "form": "validate malformed and forbidden packet families through the central policy gate",
+          "parameter_hash": "sha256:adversarial_packet_fuzz_catalog_v1",
+          "parameters_ref": "inline",
+          "rank": null
+        },
+        "operator_type": "adversarial_packet_fuzzing",
+        "packet_id": "ssp_adversarial_packet_fuzz_probe",
+        "persistence": "ephemeral",
+        "postconditions": {
+          "accepted": true,
+          "forbidden_effect_evidence_present": null,
+          "hook_cleanup_ok": null,
+          "notes": [],
+          "per_case_evidence_present": null,
+          "status": "pass",
+          "weight_fingerprint_changed": null
+        },
+        "preconditions": {
+          "allowed_tasks": [
+            "packet_policy_fuzzing"
+          ],
+          "backend": "synthetic",
+          "deterministic_seed": 0,
+          "local_files_only": true,
+          "model_name_or_path": null,
+          "requires_sandbox": true
+        },
+        "rollback": {
+          "required": true,
+          "residue_metric": "rollback_residue",
+          "strategy": "copy_restore_context"
+        },
+        "target": {
+          "layer": 0,
+          "model_family": "synthetic-linear-receiver",
+          "receiver_id": "synthetic_receiver",
+          "shape": [
+            1
+          ],
+          "state_type": "packet_policy",
+          "stream": "validator"
+        },
+        "verifier": {
+          "behavioral_tests": [
+            "off_target_regression_probe",
+            "activation_patch_probe"
+          ],
+          "causal_tests": [],
+          "spectral_tests": [],
+          "unit_tests": [
+            "norm_drift_probe",
+            "rollback_probe"
+          ]
+        },
+        "version": "0.1.0"
+      },
+      "seed": 0,
+      "status": "pass",
+      "thresholds": {
+        "cosine_drift_min": 0.98,
+        "norm_delta_max": 1.0,
+        "off_target_degradation_max": 0.02,
+        "rejection_rate_min": 1.0,
+        "rollback_residue_max": 1e-09,
+        "target_success_delta_min": 0.05
+      },
+      "warnings": []
     }
   ],
   "suite": "css-probes",
   "summary": {
-    "num_accepted": 11,
-    "num_probes": 11,
+    "num_accepted": 15,
+    "num_probes": 15,
     "num_rejected": 0
   },
   "version": "0.1.0"

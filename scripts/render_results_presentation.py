@@ -21,6 +21,7 @@ LEVEL_LABELS = {
     "level_4_causal": "L4 Causal",
     "level_5_spectral": "L5 Spectral",
     "level_6_rollback_safe": "L6 Rollback",
+    "level_7_cross_model_validated": "L7 Cross-model",
 }
 
 PROBE_LABELS = {
@@ -35,6 +36,10 @@ PROBE_LABELS = {
     "operator_vs_text_benchmark": "Operator vs text",
     "koopman_dynamics_message_probe": "Koopman dynamics",
     "proof_state_surgery_probe": "Proof state",
+    "kv_cache_surgery_probe": "KV-cache surgery",
+    "lora_adapter_dry_run_probe": "LoRA dry-run",
+    "cross_checkpoint_transfer_probe": "Cross-checkpoint",
+    "adversarial_packet_fuzz_probe": "Packet fuzzing",
 }
 
 
@@ -56,6 +61,9 @@ def render_html(payload: dict[str, Any]) -> str:
     transfer = find_probe(payload, "operator_vs_text_benchmark")["metrics"]
     activation = find_probe(payload, "activation_patch_probe")["metrics"]
     dynamics = find_probe(payload, "koopman_dynamics_message_probe")["metrics"]
+    accepted_count = payload["summary"]["num_accepted"]
+    probe_count = payload["summary"]["num_probes"]
+    levels_text = covered_level_span(coverage)
 
     level_rows = "\n".join(render_level_row(level, names, len(probes)) for level, names in coverage.items())
     probe_cards = "\n".join(render_probe_card(probe) for probe in probes)
@@ -66,7 +74,7 @@ def render_html(payload: dict[str, Any]) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS Phase 0 Results</title>
+  <title>CSS Certified Results</title>
   <style>
     :root {{
       color-scheme: light;
@@ -173,15 +181,15 @@ def render_html(payload: dict[str, Any]) -> str:
 </head>
 <body>
   <header>
-    <h1>Certified Semantic Surgery Phase 0 Results</h1>
-    <p class="subhead">Synthetic probe suite certificate generated from <code>reports/css_probe_report.json</code>. The run accepted all probes, validated every packet, and covered certification Levels 1-6.</p>
+    <h1>Certified Semantic Surgery Results</h1>
+    <p class="subhead">Probe suite certificate generated from <code>reports/css_probe_report.json</code>. The run accepted all probes, validated every packet, and covered certification {escape(levels_text)}.</p>
   </header>
   <main>
     <div class="grid">
       {metric_card("Suite accepted", "true" if payload["accepted"] else "false", "Overall accept/reject decision")}
-      {metric_card("Accepted probes", f'{payload["summary"]["num_accepted"]}/{payload["summary"]["num_probes"]}', "Probe acceptance count")}
+      {metric_card("Accepted probes", f'{accepted_count}/{probe_count}', "Probe acceptance count")}
       {metric_card("Invalid packets", "0", "Packet schema warnings in final report")}
-      {metric_card("Levels covered", "1-6", "Phase 0 certification ladder")}
+      {metric_card("Levels covered", levels_text.replace("Levels ", ""), "Certification ladder")}
     </div>
 
     <div class="two">
@@ -225,6 +233,9 @@ def render_svg(payload: dict[str, Any]) -> str:
     transfer = find_probe(payload, "operator_vs_text_benchmark")["metrics"]
     activation = find_probe(payload, "activation_patch_probe")["metrics"]
     dynamics = find_probe(payload, "koopman_dynamics_message_probe")["metrics"]
+    accepted_count = payload["summary"]["num_accepted"]
+    probe_count = payload["summary"]["num_probes"]
+    levels_text = covered_level_span(coverage)
     rows = []
     y = 245
     max_count = len(probes)
@@ -271,10 +282,10 @@ def render_svg(payload: dict[str, Any]) -> str:
     .red {{ fill: #b42318; }}
   </style>
   <rect class="bg" width="1280" height="720"/>
-  <text x="64" y="72" class="title">Certified Semantic Surgery Phase 0</text>
-  <text x="64" y="106" class="subtitle">11/11 probes accepted, all packets valid, certification Levels 1-6 covered</text>
+  <text x="64" y="72" class="title">Certified Semantic Surgery</text>
+  <text x="64" y="106" class="subtitle">{accepted_count}/{probe_count} probes accepted, all packets valid, certification {escape(levels_text)} covered</text>
 
-  {svg_metric(64, 138, "Accepted", "11/11")}
+  {svg_metric(64, 138, "Accepted", f"{accepted_count}/{probe_count}")}
   {svg_metric(350, 138, "Invalid packets", "0")}
   {svg_metric(636, 138, "Target success delta", fmt(activation["target_success_delta"]))}
   {svg_metric(922, 138, "Pseudospectral proxy", f'{fmt(dynamics["pseudospectral_proxy"])}/5.0')}
@@ -354,6 +365,14 @@ def render_probe_card(probe: dict[str, Any]) -> str:
     </div>"""
 
 
+def covered_level_span(coverage: dict[str, list[str]]) -> str:
+    covered = [key for key, names in coverage.items() if names]
+    if not covered:
+        return "Levels none"
+    numbers = [int(key.split("_")[1]) for key in covered]
+    return f"Levels {min(numbers)}-{max(numbers)}"
+
+
 def svg_metric(x: int, y: int, label: str, value: str) -> str:
     return f'<rect x="{x}" y="{y}" width="238" height="48" rx="8" class="panel"/><text x="{x + 18}" y="{y + 20}" class="small">{escape(label)}</text><text x="{x + 18}" y="{y + 42}" class="metric">{escape(value)}</text>'
 
@@ -398,11 +417,14 @@ def render_png_if_available(payload: dict[str, Any], path: Path) -> None:
     transfer = find_probe(payload, "operator_vs_text_benchmark")["metrics"]
     activation = find_probe(payload, "activation_patch_probe")["metrics"]
     dynamics = find_probe(payload, "koopman_dynamics_message_probe")["metrics"]
+    accepted_count = payload["summary"]["num_accepted"]
+    probe_count = payload["summary"]["num_probes"]
+    levels_text = covered_level_span(coverage)
 
-    draw.text((64, 54), "Certified Semantic Surgery Phase 0", fill="#17202a", font=title)
-    draw.text((64, 94), "11/11 probes accepted, all packets valid, certification Levels 1-6 covered", fill="#5f6b76", font=subtitle)
+    draw.text((64, 54), "Certified Semantic Surgery", fill="#17202a", font=title)
+    draw.text((64, 94), f"{accepted_count}/{probe_count} probes accepted, all packets valid, certification {levels_text} covered", fill="#5f6b76", font=subtitle)
 
-    draw_png_metric(draw, 64, 138, "Accepted", "11/11", metric, small)
+    draw_png_metric(draw, 64, 138, "Accepted", f"{accepted_count}/{probe_count}", metric, small)
     draw_png_metric(draw, 350, 138, "Invalid packets", "0", metric, small)
     draw_png_metric(draw, 636, 138, "Target success delta", fmt(activation["target_success_delta"]), metric, small)
     draw_png_metric(draw, 922, 138, "Pseudospectral proxy", f'{fmt(dynamics["pseudospectral_proxy"])}/5.0', metric, small)

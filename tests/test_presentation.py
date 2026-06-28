@@ -18,9 +18,12 @@ def test_results_presentation_renders_html_and_valid_svg():
     html = renderer.render_html(payload)
     svg = renderer.render_svg(payload)
 
-    assert "Certified Semantic Surgery Phase 0 Results" in html
+    assert "Certified Semantic Surgery Results" in html
     assert "Certification Coverage" in html
     assert "Operator vs Text Transfer" in html
-    assert "11/11 probes accepted" in svg
-    assert "certification Levels 1-6 covered" in svg
+    accepted = payload["summary"]["num_accepted"]
+    total = payload["summary"]["num_probes"]
+    max_level = max(int(key.split("_")[1]) for key, names in payload["certification_summary"]["coverage"].items() if names)
+    assert f"{accepted}/{total} probes accepted" in svg
+    assert f"certification Levels 1-{max_level} covered" in svg
     ET.fromstring(svg)

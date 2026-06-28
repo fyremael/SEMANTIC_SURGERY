@@ -1,0 +1,166 @@
+{
+  "accepted": false,
+  "artifacts": [],
+  "certificate": {
+    "covered_levels": [
+      "level_1_typed",
+      "level_2_bounded",
+      "level_6_rollback_safe"
+    ],
+    "levels": {
+      "level_1_typed": true,
+      "level_2_bounded": true,
+      "level_3_behavioral": false,
+      "level_4_causal": false,
+      "level_5_spectral": false,
+      "level_6_rollback_safe": true
+    },
+    "packet_valid": true,
+    "packet_warnings": [],
+    "phase": 0
+  },
+  "metrics": {
+    "cosine_drift_mean": 1.0,
+    "cosine_drift_min": 0.9999998807907104,
+    "hook_cleanup_ok": true,
+    "local_files_only": true,
+    "norm_delta_max": 0.0,
+    "norm_delta_mean": 0.0,
+    "off_target_degradation_max": 0.0,
+    "off_target_delta": 0.0,
+    "rollback_residue": 0.0,
+    "target_success_delta": 0.0,
+    "target_token_logprob_delta": 0.0,
+    "weight_fingerprint_changed": false
+  },
+  "name": "real_activation_surgery_probe",
+  "notes": [
+    "Hugging Face execution used local_files_only=True and forward hooks scoped to verifier calls."
+  ],
+  "operator": {
+    "allowed_tasks": [
+      "controlled_real_activation_surgery"
+    ],
+    "alpha": 0.0,
+    "backend": "huggingface",
+    "declared_layer": 0,
+    "form": "h_prime = h + alpha * v",
+    "local_files_only": true,
+    "model_family": "GPTNeoXForCausalLM",
+    "model_name_or_path": "C:\\Users\\jamie\\AppData\\Local\\Temp\\css_hf_pythia70m_local",
+    "operator_type": "real_activation_additive",
+    "parameter_hash": "sha256:aebf7832a4d1331f7e9fa69fa7b41438452ae7a4604e965f0c9af1c8d7497ff9",
+    "parameters_ref": "inline",
+    "persistence": "ephemeral",
+    "rank": 1,
+    "state_type": "activation_stream",
+    "stream": "gpt_neox.layers.0",
+    "target_shape": [
+      512
+    ]
+  },
+  "packet": {
+    "audit": {
+      "accepted": false,
+      "human_rendering": "Controlled local real-model semantic surgery packet for real_activation_surgery_probe.",
+      "provenance": "local-real-model-fixture",
+      "rejection_reasons": [
+        "missing_vector_zero_patch",
+        "target_token_logprob_delta_below_min"
+      ]
+    },
+    "bounds": {
+      "cosine_drift_min": 0.98,
+      "delta_norm_max": 1.0,
+      "off_target_degradation_max": 0.02,
+      "pseudospectral_proxy_max": null,
+      "rollback_residue_max": 1e-09,
+      "sigma_max": null,
+      "spectral_radius_max": null
+    },
+    "forbidden_effects": [
+      "off_target_degradation_gt_0.02",
+      "cosine_drift_below_0.98",
+      "rollback_residue_gt_1e-9",
+      "unstable_spectral_or_pseudospectral_growth"
+    ],
+    "intended_effect": {
+      "description": "Satisfy the synthetic probe acceptance contract without violating Phase 0 bounds.",
+      "minimum_delta": null,
+      "target_metric": "accepted"
+    },
+    "operator": {
+      "form": "h_prime = h + alpha * v",
+      "parameter_hash": "sha256:aebf7832a4d1331f7e9fa69fa7b41438452ae7a4604e965f0c9af1c8d7497ff9",
+      "parameters_ref": "inline",
+      "rank": 1
+    },
+    "operator_type": "real_activation_additive",
+    "packet_id": "ssp_real_activation_surgery_probe",
+    "persistence": "ephemeral",
+    "postconditions": {
+      "accepted": false,
+      "hook_cleanup_ok": true,
+      "notes": [
+        "Hugging Face execution used local_files_only=True and forward hooks scoped to verifier calls."
+      ],
+      "status": "fail",
+      "weight_fingerprint_changed": false
+    },
+    "preconditions": {
+      "allowed_tasks": [
+        "controlled_real_activation_surgery"
+      ],
+      "backend": "huggingface",
+      "deterministic_seed": 0,
+      "local_files_only": true,
+      "model_name_or_path": "C:\\Users\\jamie\\AppData\\Local\\Temp\\css_hf_pythia70m_local",
+      "requires_sandbox": true
+    },
+    "rollback": {
+      "required": true,
+      "residue_metric": "rollback_residue",
+      "strategy": "copy_restore_context"
+    },
+    "target": {
+      "layer": 0,
+      "model_family": "GPTNeoXForCausalLM",
+      "receiver_id": "huggingface_receiver",
+      "shape": [
+        512
+      ],
+      "state_type": "activation_stream",
+      "stream": "gpt_neox.layers.0"
+    },
+    "verifier": {
+      "behavioral_tests": [
+        "off_target_regression_probe",
+        "activation_patch_probe"
+      ],
+      "causal_tests": [],
+      "spectral_tests": [],
+      "unit_tests": [
+        "norm_drift_probe",
+        "rollback_probe",
+        "real_model_hook_cleanup",
+        "real_model_no_weight_mutation"
+      ]
+    },
+    "version": "0.1.0"
+  },
+  "seed": 0,
+  "status": "fail",
+  "thresholds": {
+    "cosine_drift_min": 0.98,
+    "hook_cleanup_required": true,
+    "norm_delta_max": 1.0,
+    "off_target_degradation_max": 0.02,
+    "rollback_residue_max": 1e-09,
+    "target_token_logprob_delta_min": 1e-09,
+    "weight_fingerprint_changed_required": false
+  },
+  "warnings": [
+    "missing_vector_zero_patch",
+    "target_token_logprob_delta_below_min"
+  ]
+}

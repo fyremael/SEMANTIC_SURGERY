@@ -13,5 +13,12 @@
       "prompt": "2 + 2 =",
       "target_token": " 4"
     }
+  ],
+  "forbidden": [
+    {
+      "label": "germany_paris_leak",
+      "prompt": "The capital of Germany is",
+      "target_token": " Paris"
+    }
   ]
 }

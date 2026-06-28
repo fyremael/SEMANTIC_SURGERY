@@ -32,13 +32,14 @@ class PromptSuite:
     target: list[PromptCase]
     off_target: list[PromptCase]
     description: str = ""
+    forbidden: list[PromptCase] = field(default_factory=list)
 
     def validate(self) -> None:
         if not self.target:
             raise ValueError("prompt suite must include at least one target case")
         if not self.off_target:
             raise ValueError("prompt suite must include at least one off_target case")
-        for group_name, cases in (("target", self.target), ("off_target", self.off_target)):
+        for group_name, cases in (("target", self.target), ("off_target", self.off_target), ("forbidden", self.forbidden)):
             for idx, case in enumerate(cases):
                 if not case.prompt:
                     raise ValueError(f"{group_name}[{idx}] missing prompt")
@@ -83,6 +84,12 @@ class RealModelAdapter(Protocol):
     def run_activation_surgery(self, config: ActivationSurgeryConfig) -> RealActivationResult:
         ...
 
+    def model_fingerprint(self, model: Any) -> str:
+        ...
+
+    def resolve_stream(self, model: Any, layer: int, stream: str) -> str:
+        ...
+
 
 def load_prompt_suite(path: str | Path) -> PromptSuite:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -90,6 +97,7 @@ def load_prompt_suite(path: str | Path) -> PromptSuite:
         description=str(payload.get("description", "")),
         target=[_case_from_payload(item) for item in payload.get("target", [])],
         off_target=[_case_from_payload(item) for item in payload.get("off_target", [])],
+        forbidden=[_case_from_payload(item) for item in payload.get("forbidden", [])],
     )
     suite.validate()
     return suite

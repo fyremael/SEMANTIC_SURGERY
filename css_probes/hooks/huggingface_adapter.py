@@ -48,6 +48,7 @@ class HuggingFaceAdapter:
 
         target_before = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.target]
         off_before = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.off_target]
+        forbidden_before = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.forbidden]
 
         captured_before: list[np.ndarray] = []
         captured_after: list[np.ndarray] = []
@@ -73,6 +74,7 @@ class HuggingFaceAdapter:
         try:
             target_after = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.target]
             off_after = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.off_target]
+            forbidden_after = [_case_logprob(model, tokenizer, case, None, None, None) for case in config.prompt_suite.forbidden]
         finally:
             handle.remove()
             cleanup_ok = True
@@ -84,11 +86,22 @@ class HuggingFaceAdapter:
         drift = _activation_drift(captured_before, captured_after)
         target_delta = float(np.mean(target_after) - np.mean(target_before))
         off_delta = float(np.mean(off_after) - np.mean(off_before))
+        target_case_deltas = [float(after - before) for after, before in zip(target_after, target_before)]
+        off_case_deltas = [float(after - before) for after, before in zip(off_after, off_before)]
+        forbidden_case_deltas = [float(after - before) for after, before in zip(forbidden_after, forbidden_before)]
         metrics = {
             "target_token_logprob_delta": target_delta,
             "target_success_delta": target_delta,
+            "target_case_deltas": _labeled(config.prompt_suite.target, target_case_deltas),
+            "target_case_delta_min": float(min(target_case_deltas)),
             "off_target_delta": off_delta,
             "off_target_degradation_max": float(max(0.0, -off_delta)),
+            "off_target_case_deltas": _labeled(config.prompt_suite.off_target, off_case_deltas),
+            "off_target_case_degradation_max": float(max([0.0] + [-value for value in off_case_deltas])),
+            "forbidden_case_deltas": _labeled(config.prompt_suite.forbidden, forbidden_case_deltas),
+            "forbidden_leakage_max": float(max([0.0] + forbidden_case_deltas)),
+            "per_case_evidence_present": True,
+            "forbidden_effect_evidence_present": bool(config.prompt_suite.forbidden),
             "rollback_residue": float(rollback_residue),
             "weight_fingerprint_changed": before_fingerprint != after_fingerprint,
             "hook_cleanup_ok": cleanup_ok,
@@ -113,6 +126,12 @@ class HuggingFaceAdapter:
             warnings=["missing_vector_zero_patch"] if vector_missing else [],
             notes=["Hugging Face execution used local_files_only=True and forward hooks scoped to verifier calls."],
         )
+
+    def model_fingerprint(self, model: Any) -> str:
+        return _model_fingerprint(model)
+
+    def resolve_stream(self, model: Any, layer: int, stream: str) -> str:
+        return _resolve_hf_module_name(model, layer, stream)
 
 
 def _case_logprob(model: Any, tokenizer: Any, case: PromptCase, *_unused: Any) -> float:
@@ -154,6 +173,13 @@ def _resolve_hf_module_name(model: Any, layer: int, stream: str) -> str:
         except AttributeError:
             continue
     raise ValueError(f"could not resolve Hugging Face hook module for layer={layer} stream={stream}")
+
+
+def _labeled(cases: list[PromptCase], values: list[float]) -> dict[str, float]:
+    return {
+        case.label or f"case_{idx}": float(value)
+        for idx, (case, value) in enumerate(zip(cases, values))
+    }
 
 
 def _model_fingerprint(model: Any) -> str:

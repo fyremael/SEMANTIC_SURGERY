@@ -43,8 +43,8 @@ class ProbeResult:
     name: str
     status: str
     seed: int
-    metrics: dict[str, float | int | bool | str]
-    thresholds: dict[str, float | int | bool | str] = field(default_factory=dict)
+    metrics: dict[str, Any]
+    thresholds: dict[str, Any] = field(default_factory=dict)
     accepted: bool = False
     warnings: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)

@@ -9,7 +9,7 @@ This repository contains:
 - `tests/` — deterministic unit tests;
 - `.github/workflows/ci.yml` — basic CI.
 
-The suite is intentionally synthetic and conservative. It proves the plumbing first: packets, operators, certificates, metrics, rollback, spectra, pseudospectra, locality, and operator-vs-text transfer benchmarks. Real transformer hooks are the next extension.
+The default suite is offline and conservative. It proves the plumbing first: packets, operators, certificates, metrics, rollback, spectra, pseudospectra, locality, operator-vs-text transfer benchmarks, toy KV-cache surgery, removable adapter dry-runs, cross-checkpoint transfer, and adversarial packet rejection. Optional real transformer hooks run only against local models.
 
 ## Install
 
@@ -21,13 +21,18 @@ python -m pip install -e .[dev]
 
 ```bash
 python -m css_probes.cli run-all --out reports/css_probe_report.json
+python -m css_probes.cli packet validate --in reports/css_probe_report.json
+python -m css_probes.cli certify --in reports/css_probe_report.json --out reports/certificate.json
+python -m css_probes.cli aether roundtrip --in reports/css_probe_report.json --out reports/aether_roundtrip.json
 ```
 
 This writes the machine report to `reports/css_probe_report.json` and a human-readable
 operator-card sidecar to `reports/css_probe_report.operator_cards.md`.
 
 The JSON report includes one Semantic Surgery Packet and one certification record per
-probe. See `docs/PHASE0_COMPLIANCE.md` for the spec-to-implementation mapping.
+probe. The suite now covers certification Levels 1-7 in the controlled, non-persistent
+research boundary. See `docs/FULL_SPEC_COVERAGE.md` for the spec-to-implementation
+mapping.
 
 ## Run one probe
 
@@ -60,10 +65,14 @@ pytest -q
 - `operator_vs_text_benchmark`
 - `koopman_dynamics_message_probe`
 - `proof_state_surgery_probe`
+- `kv_cache_surgery_probe`
+- `lora_adapter_dry_run_probe`
+- `cross_checkpoint_transfer_probe`
+- `adversarial_packet_fuzz_probe`
 
 ## Safety posture
 
-Phase-one CSS allows only synthetic, ephemeral, or removable transformations. It rejects autonomous permanent weight edits, opaque latent packets, verifier-bypassing operators, and self-modifying operator loops.
+CSS allows only synthetic, ephemeral, session-scoped, or removable transformations in this repo. It rejects autonomous permanent weight edits, opaque latent packets, verifier-bypassing operators, network/download behavior, global unbounded operators, and self-modifying operator loops.
 
 ## Controlled real-model adapters
 
@@ -79,6 +88,14 @@ python -m css_probes.cli real activation-surgery \
   --layer 0 \
   --stream residual \
   --out reports/real_activation_surgery.json
+
+python -m css_probes.cli real envelope-audit \
+  --backend huggingface \
+  --model /path/to/local/model \
+  --prompt-suite examples/prompt_suite_harmless.json \
+  --layer 0 \
+  --stream residual \
+  --out reports/real_envelope.json
 ```
 
-These adapters use ephemeral inference hooks only. They do not download models, save models, mutate weights, run optimizer steps, or relax packet/certificate gates. See `docs/REAL_MODEL_ADAPTERS.md`.
+These adapters use ephemeral inference hooks only. They do not download models, save models, mutate weights, run optimizer steps, or relax packet/certificate gates. Real reports include per-case target, off-target, and forbidden-effect evidence. See `docs/REAL_MODEL_ADAPTERS.md`.

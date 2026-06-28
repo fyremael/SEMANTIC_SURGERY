@@ -1,0 +1,282 @@
+{
+  "chosen": {
+    "alpha": 0.3,
+    "cosine_drift_min": 0.9999995231628418,
+    "gate_preview_accepted": true,
+    "norm_delta_max": 0.31008464097976685,
+    "off_target_case_degradation_max": 0.0234375,
+    "off_target_case_deltas": {
+      "arithmetic": -0.01171875,
+      "germany": -0.015625,
+      "italy": -0.01953125,
+      "spain": -0.0234375
+    },
+    "off_target_degradation_max": 0.017578125,
+    "off_target_delta": -0.017578125,
+    "rollback_residue": 0.0,
+    "strict_preview_accepted": false,
+    "target_case_delta_min": -0.02734375,
+    "target_case_deltas": {
+      "france_basic": 0.40234375,
+      "france_location": -0.02734375,
+      "france_possessive": 0.4765625,
+      "france_question": 0.47265625
+    },
+    "target_token_logprob_delta": 0.3310546875
+  },
+  "model_path": "C:\\Users\\jamie\\AppData\\Local\\Temp\\css_hf_pythia70m_local",
+  "prompt_suite": "F:\\_codex\\SEMANTIC_SURGERY\\reports\\real_prompt_suite_france_multi.json",
+  "rows": [
+    {
+      "alpha": 0.1,
+      "cosine_drift_min": 0.9999998807907104,
+      "gate_preview_accepted": true,
+      "norm_delta_max": 0.10412798821926117,
+      "off_target_case_degradation_max": 0.0078125,
+      "off_target_case_deltas": {
+        "arithmetic": -0.0078125,
+        "germany": -0.0078125,
+        "italy": -0.0078125,
+        "spain": -0.0078125
+      },
+      "off_target_degradation_max": 0.0078125,
+      "off_target_delta": -0.0078125,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": -0.01953125,
+      "target_case_deltas": {
+        "france_basic": -0.01171875,
+        "france_location": -0.01953125,
+        "france_possessive": 0.4921875,
+        "france_question": 0.484375
+      },
+      "target_token_logprob_delta": 0.236328125
+    },
+    {
+      "alpha": 0.2,
+      "cosine_drift_min": 0.9999997019767761,
+      "gate_preview_accepted": true,
+      "norm_delta_max": 0.20752383768558502,
+      "off_target_case_degradation_max": 0.0234375,
+      "off_target_case_deltas": {
+        "arithmetic": -0.01171875,
+        "germany": -0.015625,
+        "italy": -0.015625,
+        "spain": -0.0234375
+      },
+      "off_target_degradation_max": 0.0166015625,
+      "off_target_delta": -0.0166015625,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": -0.08203125,
+      "target_case_deltas": {
+        "france_basic": -0.08203125,
+        "france_location": -0.02734375,
+        "france_possessive": 0.48046875,
+        "france_question": 0.47265625
+      },
+      "target_token_logprob_delta": 0.2109375
+    },
+    {
+      "alpha": 0.3,
+      "cosine_drift_min": 0.9999995231628418,
+      "gate_preview_accepted": true,
+      "norm_delta_max": 0.31008464097976685,
+      "off_target_case_degradation_max": 0.0234375,
+      "off_target_case_deltas": {
+        "arithmetic": -0.01171875,
+        "germany": -0.015625,
+        "italy": -0.01953125,
+        "spain": -0.0234375
+      },
+      "off_target_degradation_max": 0.017578125,
+      "off_target_delta": -0.017578125,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": -0.02734375,
+      "target_case_deltas": {
+        "france_basic": 0.40234375,
+        "france_location": -0.02734375,
+        "france_possessive": 0.4765625,
+        "france_question": 0.47265625
+      },
+      "target_token_logprob_delta": 0.3310546875
+    },
+    {
+      "alpha": 0.4,
+      "cosine_drift_min": 0.9999992251396179,
+      "gate_preview_accepted": true,
+      "norm_delta_max": 0.40801239013671875,
+      "off_target_case_degradation_max": 0.0234375,
+      "off_target_case_deltas": {
+        "arithmetic": -0.01171875,
+        "germany": -0.015625,
+        "italy": -0.01953125,
+        "spain": -0.0234375
+      },
+      "off_target_degradation_max": 0.017578125,
+      "off_target_delta": -0.017578125,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": -0.03125,
+      "target_case_deltas": {
+        "france_basic": 0.39453125,
+        "france_location": -0.03125,
+        "france_possessive": 0.4609375,
+        "france_question": 0.46484375
+      },
+      "target_token_logprob_delta": 0.322265625
+    },
+    {
+      "alpha": 0.5,
+      "cosine_drift_min": 0.9999988675117493,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.5056402683258057,
+      "off_target_case_degradation_max": 0.03515625,
+      "off_target_case_deltas": {
+        "arithmetic": -0.015625,
+        "germany": -0.0234375,
+        "italy": -0.03515625,
+        "spain": -0.03125
+      },
+      "off_target_degradation_max": 0.0263671875,
+      "off_target_delta": -0.0263671875,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": -0.03515625,
+      "target_case_deltas": {
+        "france_basic": 0.390625,
+        "france_location": -0.03515625,
+        "france_possessive": 0.45703125,
+        "france_question": 0.43359375
+      },
+      "target_token_logprob_delta": 0.3115234375
+    },
+    {
+      "alpha": 0.6,
+      "cosine_drift_min": 0.9999983906745911,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.6017208099365234,
+      "off_target_case_degradation_max": 0.04296875,
+      "off_target_case_deltas": {
+        "arithmetic": -0.015625,
+        "germany": -0.03125,
+        "italy": -0.03515625,
+        "spain": -0.04296875
+      },
+      "off_target_degradation_max": 0.03125,
+      "off_target_delta": -0.03125,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": 0.38671875,
+      "target_case_deltas": {
+        "france_basic": 0.38671875,
+        "france_location": 0.45703125,
+        "france_possessive": 0.4453125,
+        "france_question": 0.43359375
+      },
+      "target_token_logprob_delta": 0.4306640625
+    },
+    {
+      "alpha": 0.7,
+      "cosine_drift_min": 0.9999977350234985,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.7069593071937561,
+      "off_target_case_degradation_max": 0.1171875,
+      "off_target_case_deltas": {
+        "arithmetic": -0.1171875,
+        "germany": -0.03125,
+        "italy": -0.0390625,
+        "spain": -0.046875
+      },
+      "off_target_degradation_max": 0.05859375,
+      "off_target_delta": -0.05859375,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": 0.3828125,
+      "target_case_deltas": {
+        "france_basic": 0.3828125,
+        "france_location": 0.453125,
+        "france_possessive": 0.4375,
+        "france_question": 0.4296875
+      },
+      "target_token_logprob_delta": 0.42578125
+    },
+    {
+      "alpha": 0.8,
+      "cosine_drift_min": 0.9999971985816956,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.805040717124939,
+      "off_target_case_degradation_max": 0.12109375,
+      "off_target_case_deltas": {
+        "arithmetic": -0.12109375,
+        "germany": -0.109375,
+        "italy": -0.05078125,
+        "spain": -0.0546875
+      },
+      "off_target_degradation_max": 0.083984375,
+      "off_target_delta": -0.083984375,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": 0.35546875,
+      "target_case_deltas": {
+        "france_basic": 0.35546875,
+        "france_location": 0.43359375,
+        "france_possessive": 0.42578125,
+        "france_question": 0.41015625
+      },
+      "target_token_logprob_delta": 0.40625
+    },
+    {
+      "alpha": 0.9,
+      "cosine_drift_min": 0.9999963045120239,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.9069082140922546,
+      "off_target_case_degradation_max": 0.12109375,
+      "off_target_case_deltas": {
+        "arithmetic": -0.12109375,
+        "germany": -0.109375,
+        "italy": -0.05078125,
+        "spain": -0.0546875
+      },
+      "off_target_degradation_max": 0.083984375,
+      "off_target_delta": -0.083984375,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": 0.35546875,
+      "target_case_deltas": {
+        "france_basic": 0.35546875,
+        "france_location": 0.42578125,
+        "france_possessive": 0.41796875,
+        "france_question": 0.3984375
+      },
+      "target_token_logprob_delta": 0.3994140625
+    },
+    {
+      "alpha": 0.98,
+      "cosine_drift_min": 0.999995768070221,
+      "gate_preview_accepted": false,
+      "norm_delta_max": 0.9827120900154114,
+      "off_target_case_degradation_max": 0.123046875,
+      "off_target_case_deltas": {
+        "arithmetic": -0.123046875,
+        "germany": -0.1171875,
+        "italy": -0.05078125,
+        "spain": -0.0625
+      },
+      "off_target_degradation_max": 0.08837890625,
+      "off_target_delta": -0.08837890625,
+      "rollback_residue": 0.0,
+      "strict_preview_accepted": false,
+      "target_case_delta_min": 0.35546875,
+      "target_case_deltas": {
+        "france_basic": 0.35546875,
+        "france_location": 0.421875,
+        "france_possessive": 0.4140625,
+        "france_question": 0.3984375
+      },
+      "target_token_logprob_delta": 0.3974609375
+    }
+  ],
+  "stream": "gpt_neox.final_layer_norm"
+}

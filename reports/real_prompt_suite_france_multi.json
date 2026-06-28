@@ -1,0 +1,47 @@
+{
+  "description": "Multi-prompt France/Paris target suite with arithmetic and geography off-target guards.",
+  "off_target": [
+    {
+      "label": "arithmetic",
+      "prompt": "2 + 2 =",
+      "target_token": " 4"
+    },
+    {
+      "label": "germany",
+      "prompt": "The capital of Germany is",
+      "target_token": " Berlin"
+    },
+    {
+      "label": "spain",
+      "prompt": "The capital of Spain is",
+      "target_token": " Madrid"
+    },
+    {
+      "label": "italy",
+      "prompt": "The capital of Italy is",
+      "target_token": " Rome"
+    }
+  ],
+  "target": [
+    {
+      "label": "france_basic",
+      "prompt": "The capital of France is",
+      "target_token": " Paris"
+    },
+    {
+      "label": "france_possessive",
+      "prompt": "France's capital city is",
+      "target_token": " Paris"
+    },
+    {
+      "label": "france_location",
+      "prompt": "In France, the capital is",
+      "target_token": " Paris"
+    },
+    {
+      "label": "france_question",
+      "prompt": "Q: What is the capital of France? A:",
+      "target_token": " Paris"
+    }
+  ]
+}

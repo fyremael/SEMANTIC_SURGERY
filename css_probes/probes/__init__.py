@@ -17,6 +17,10 @@ PROBE_NAMES = [
     "operator_vs_text_benchmark",
     "koopman_dynamics_message_probe",
     "proof_state_surgery_probe",
+    "kv_cache_surgery_probe",
+    "lora_adapter_dry_run_probe",
+    "cross_checkpoint_transfer_probe",
+    "adversarial_packet_fuzz_probe",
 ]
 
 

@@ -1,0 +1,136 @@
+{
+  "chosen": {
+    "accepted_by_gate_preview": true,
+    "alpha": 0.4,
+    "cosine_drift_min": 0.9999992251396179,
+    "norm_delta_max": 0.40547963976860046,
+    "off_target_degradation_max": 0.0,
+    "off_target_delta": 0.0078125,
+    "rollback_residue": 0.0,
+    "target_token_logprob_delta": 0.50390625
+  },
+  "model_path": "C:\\Users\\jamie\\AppData\\Local\\Temp\\css_hf_pythia70m_local",
+  "rows": [
+    {
+      "accepted_by_gate_preview": false,
+      "alpha": 0.005,
+      "cosine_drift_min": 0.9999999403953552,
+      "norm_delta_max": 0.002429935149848461,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.0
+    },
+    {
+      "accepted_by_gate_preview": false,
+      "alpha": 0.01,
+      "cosine_drift_min": 0.9999998807907104,
+      "norm_delta_max": 0.0068880547769367695,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.0
+    },
+    {
+      "accepted_by_gate_preview": false,
+      "alpha": 0.02,
+      "cosine_drift_min": 0.9999998807907104,
+      "norm_delta_max": 0.01726680062711239,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.0
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.04,
+      "cosine_drift_min": 0.9999999403953552,
+      "norm_delta_max": 0.03640438988804817,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.00390625
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.08,
+      "cosine_drift_min": 0.9999998807907104,
+      "norm_delta_max": 0.07977871596813202,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0078125,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.00390625
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.12,
+      "cosine_drift_min": 0.9999999403953552,
+      "norm_delta_max": 0.12536555528640747,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.00390625
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.16,
+      "cosine_drift_min": 0.9999998211860657,
+      "norm_delta_max": 0.16811348497867584,
+      "off_target_degradation_max": 0.00390625,
+      "off_target_delta": -0.00390625,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.00390625
+    },
+    {
+      "accepted_by_gate_preview": false,
+      "alpha": 0.2,
+      "cosine_drift_min": 0.9999997019767761,
+      "norm_delta_max": 0.2075119912624359,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.01171875,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.0
+    },
+    {
+      "accepted_by_gate_preview": false,
+      "alpha": 0.3,
+      "cosine_drift_min": 0.9999995231628418,
+      "norm_delta_max": 0.30803051590919495,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.01171875,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.0
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.4,
+      "cosine_drift_min": 0.9999992251396179,
+      "norm_delta_max": 0.40547963976860046,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.0078125,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.50390625
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.6,
+      "cosine_drift_min": 0.9999983906745911,
+      "norm_delta_max": 0.6048408150672913,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.015625,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.50390625
+    },
+    {
+      "accepted_by_gate_preview": true,
+      "alpha": 0.8,
+      "cosine_drift_min": 0.9999971985816956,
+      "norm_delta_max": 0.8057072758674622,
+      "off_target_degradation_max": 0.0,
+      "off_target_delta": 0.01171875,
+      "rollback_residue": 0.0,
+      "target_token_logprob_delta": 0.5
+    }
+  ],
+  "stream": "gpt_neox.final_layer_norm"
+}

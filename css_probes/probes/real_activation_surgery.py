@@ -15,6 +15,7 @@ from css_probes.operators import array_sha256
 
 
 REAL_TARGET_DELTA_MIN = 1e-9
+REAL_FORBIDDEN_LEAKAGE_MAX = 0.02
 
 
 def load_vector(path: str | Path | None) -> list[float] | None:
@@ -45,7 +46,10 @@ def result_from_adapter(config: ActivationSurgeryConfig, adapter_result: RealAct
     metrics = dict(adapter_result.metrics)
     thresholds: dict[str, float | int | bool | str] = {
         "target_token_logprob_delta_min": REAL_TARGET_DELTA_MIN,
+        "target_case_delta_min": REAL_TARGET_DELTA_MIN,
         "off_target_degradation_max": PHASE0_DEFAULT_THRESHOLDS["off_target_degradation_max"],
+        "off_target_case_degradation_max": PHASE0_DEFAULT_THRESHOLDS["off_target_degradation_max"],
+        "forbidden_leakage_max": REAL_FORBIDDEN_LEAKAGE_MAX,
         "norm_delta_max": PHASE0_DEFAULT_THRESHOLDS["norm_delta_max"],
         "cosine_drift_min": PHASE0_DEFAULT_THRESHOLDS["cosine_drift_min"],
         "rollback_residue_max": PHASE0_DEFAULT_THRESHOLDS["rollback_residue_max"],
@@ -57,6 +61,14 @@ def result_from_adapter(config: ActivationSurgeryConfig, adapter_result: RealAct
     required_metrics = [
         "target_token_logprob_delta",
         "off_target_degradation_max",
+        "target_case_deltas",
+        "target_case_delta_min",
+        "off_target_case_deltas",
+        "off_target_case_degradation_max",
+        "forbidden_case_deltas",
+        "forbidden_leakage_max",
+        "per_case_evidence_present",
+        "forbidden_effect_evidence_present",
         "norm_delta_max",
         "cosine_drift_min",
         "rollback_residue",
@@ -77,9 +89,24 @@ def result_from_adapter(config: ActivationSurgeryConfig, adapter_result: RealAct
     if float(metrics.get("target_token_logprob_delta", 0.0)) < REAL_TARGET_DELTA_MIN:
         accepted = False
         warnings.append("target_token_logprob_delta_below_min")
+    if not bool(metrics.get("per_case_evidence_present", False)):
+        accepted = False
+        warnings.append("missing_per_case_behavioral_evidence")
+    if not bool(metrics.get("forbidden_effect_evidence_present", False)):
+        accepted = False
+        warnings.append("missing_forbidden_effect_evidence")
+    if float(metrics.get("target_case_delta_min", -1.0)) < REAL_TARGET_DELTA_MIN:
+        accepted = False
+        warnings.append("target_case_delta_below_min")
     if float(metrics.get("off_target_degradation_max", 1.0)) > thresholds["off_target_degradation_max"]:
         accepted = False
         warnings.append("off_target_degradation_exceeded")
+    if float(metrics.get("off_target_case_degradation_max", 1.0)) > thresholds["off_target_case_degradation_max"]:
+        accepted = False
+        warnings.append("off_target_case_degradation_exceeded")
+    if float(metrics.get("forbidden_leakage_max", 1.0)) > thresholds["forbidden_leakage_max"]:
+        accepted = False
+        warnings.append("forbidden_leakage_exceeded")
     if float(metrics.get("norm_delta_max", 1e9)) > thresholds["norm_delta_max"]:
         accepted = False
         warnings.append("norm_delta_exceeded")
@@ -128,6 +155,14 @@ def _rejected_result_from_exception(config: ActivationSurgeryConfig, exc: Except
     metrics: dict[str, float | int | bool | str] = {
         "target_token_logprob_delta": 0.0,
         "target_success_delta": 0.0,
+        "target_case_deltas": {},
+        "target_case_delta_min": 0.0,
+        "off_target_case_deltas": {},
+        "off_target_case_degradation_max": 1.0,
+        "forbidden_case_deltas": {},
+        "forbidden_leakage_max": 1.0,
+        "per_case_evidence_present": False,
+        "forbidden_effect_evidence_present": False,
         "off_target_degradation_max": 1.0,
         "norm_delta_max": 0.0,
         "cosine_drift_min": 1.0,
@@ -138,7 +173,10 @@ def _rejected_result_from_exception(config: ActivationSurgeryConfig, exc: Except
     }
     thresholds: dict[str, float | int | bool | str] = {
         "target_token_logprob_delta_min": REAL_TARGET_DELTA_MIN,
+        "target_case_delta_min": REAL_TARGET_DELTA_MIN,
         "off_target_degradation_max": PHASE0_DEFAULT_THRESHOLDS["off_target_degradation_max"],
+        "off_target_case_degradation_max": PHASE0_DEFAULT_THRESHOLDS["off_target_degradation_max"],
+        "forbidden_leakage_max": REAL_FORBIDDEN_LEAKAGE_MAX,
         "norm_delta_max": PHASE0_DEFAULT_THRESHOLDS["norm_delta_max"],
         "cosine_drift_min": PHASE0_DEFAULT_THRESHOLDS["cosine_drift_min"],
         "rollback_residue_max": PHASE0_DEFAULT_THRESHOLDS["rollback_residue_max"],

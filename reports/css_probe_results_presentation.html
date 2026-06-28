@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS Phase 0 Results</title>
+  <title>CSS Certified Results</title>
   <style>
     :root {
       color-scheme: light;
@@ -110,15 +110,15 @@
 </head>
 <body>
   <header>
-    <h1>Certified Semantic Surgery Phase 0 Results</h1>
-    <p class="subhead">Synthetic probe suite certificate generated from <code>reports/css_probe_report.json</code>. The run accepted all probes, validated every packet, and covered certification Levels 1-6.</p>
+    <h1>Certified Semantic Surgery Results</h1>
+    <p class="subhead">Probe suite certificate generated from <code>reports/css_probe_report.json</code>. The run accepted all probes, validated every packet, and covered certification Levels 1-7.</p>
   </header>
   <main>
     <div class="grid">
       <div class="metric"><div class="label">Suite accepted</div><div class="value">true</div><div class="small">Overall accept/reject decision</div></div>
-      <div class="metric"><div class="label">Accepted probes</div><div class="value">11/11</div><div class="small">Probe acceptance count</div></div>
+      <div class="metric"><div class="label">Accepted probes</div><div class="value">15/15</div><div class="small">Probe acceptance count</div></div>
       <div class="metric"><div class="label">Invalid packets</div><div class="value">0</div><div class="small">Packet schema warnings in final report</div></div>
-      <div class="metric"><div class="label">Levels covered</div><div class="value">1-6</div><div class="small">Phase 0 certification ladder</div></div>
+      <div class="metric"><div class="label">Levels covered</div><div class="value">1-7</div><div class="small">Certification ladder</div></div>
     </div>
 
     <div class="two">
@@ -128,37 +128,43 @@
     <div class="barrow">
       <div>L1 Typed</div>
       <div class="bar"><div class="fill" style="width: 100.0%"></div></div>
-      <div class="small">11/11</div>
+      <div class="small">15/15</div>
     </div>
 
     <div class="barrow">
       <div>L2 Bounded</div>
-      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
-      <div class="small">3/11</div>
+      <div class="bar"><div class="fill" style="width: 46.7%"></div></div>
+      <div class="small">7/15</div>
     </div>
 
     <div class="barrow">
       <div>L3 Behavioral</div>
-      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
-      <div class="small">3/11</div>
+      <div class="bar"><div class="fill" style="width: 46.7%"></div></div>
+      <div class="small">7/15</div>
     </div>
 
     <div class="barrow">
       <div>L4 Causal</div>
-      <div class="bar"><div class="fill" style="width: 18.2%"></div></div>
-      <div class="small">2/11</div>
+      <div class="bar"><div class="fill" style="width: 20.0%"></div></div>
+      <div class="small">3/15</div>
     </div>
 
     <div class="barrow">
       <div>L5 Spectral</div>
-      <div class="bar"><div class="fill" style="width: 36.4%"></div></div>
-      <div class="small">4/11</div>
+      <div class="bar"><div class="fill" style="width: 33.3%"></div></div>
+      <div class="small">5/15</div>
     </div>
 
     <div class="barrow">
       <div>L6 Rollback</div>
-      <div class="bar"><div class="fill" style="width: 27.3%"></div></div>
-      <div class="small">3/11</div>
+      <div class="bar"><div class="fill" style="width: 46.7%"></div></div>
+      <div class="small">7/15</div>
+    </div>
+
+    <div class="barrow">
+      <div>L7 Cross-model</div>
+      <div class="bar"><div class="fill" style="width: 6.7%"></div></div>
+      <div class="small">1/15</div>
     </div>
       </section>
       <section>
@@ -347,6 +353,54 @@
         <dt>Operator</dt><dd>proof_state_transition</dd>
         <dt>Persistence</dt><dd>ephemeral</dd>
         <dt>Target</dt><dd>proof_state</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>KV-cache surgery</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L4 Causal</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_kv_cache_surgery_probe</dd>
+        <dt>Operator</dt><dd>kv_cache_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>kv_cache</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>LoRA dry-run</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L5 Spectral</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_lora_adapter_dry_run_probe</dd>
+        <dt>Operator</dt><dd>lora_adapter_dry_run</dd>
+        <dt>Persistence</dt><dd>removable</dd>
+        <dt>Target</dt><dd>adapter_delta</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Cross-checkpoint</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L6 Rollback</span> <span class="badge level-badge">L7 Cross-model</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_cross_checkpoint_transfer_probe</dd>
+        <dt>Operator</dt><dd>cross_checkpoint_activation_additive</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>activation_stream</dd>
+      </dl>
+    </div>
+
+    <div class="probe">
+      <h3>Packet fuzzing</h3>
+      <span class="badge">accepted</span>
+      <span class="badge level-badge">L1 Typed</span> <span class="badge level-badge">L2 Bounded</span> <span class="badge level-badge">L3 Behavioral</span> <span class="badge level-badge">L6 Rollback</span>
+      <dl>
+        <dt>Packet</dt><dd>ssp_adversarial_packet_fuzz_probe</dd>
+        <dt>Operator</dt><dd>adversarial_packet_fuzzing</dd>
+        <dt>Persistence</dt><dd>ephemeral</dd>
+        <dt>Target</dt><dd>packet_policy</dd>
       </dl>
     </div>
       </div>

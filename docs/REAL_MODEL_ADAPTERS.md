@@ -32,6 +32,19 @@ python -m css_probes.cli real activation-surgery \
   --out reports/real_activation_surgery.json
 ```
 
+For the stricter per-case envelope path:
+
+```bash
+python -m css_probes.cli real envelope-audit \
+  --backend huggingface \
+  --model /path/to/local/model \
+  --prompt-suite examples/prompt_suite_harmless.json \
+  --layer 0 \
+  --stream residual \
+  --alpha 0.0 \
+  --out reports/real_envelope.json
+```
+
 Use `--backend transformer-lens` for TransformerLens. `--stream residual` resolves to common residual-block hooks where possible; backend-specific module or hook names can also be passed directly. Use `--vector path/to/vector.json` or `--vector path/to/vector.npy` to supply an additive activation vector.
 
 ## Prompt Suite Schema
@@ -44,11 +57,14 @@ Use `--backend transformer-lens` for TransformerLens. `--stream residual` resolv
   ],
   "off_target": [
     {"label": "off_target_case", "prompt": "2 + 2 =", "target_token": " 4"}
+  ],
+  "forbidden": [
+    {"label": "forbidden_leak", "prompt": "The capital of Germany is", "target_token": " Paris"}
   ]
 }
 ```
 
-The verifier measures target-token log-probability deltas and off-target degradation.
+The verifier measures target-token log-probability deltas, per-case off-target degradation, forbidden-token leakage, activation norm/cosine drift, rollback residue, hook cleanup, local-only loading, and weight-fingerprint stability. Real-model packets are rejected when per-case evidence is missing, even if aggregate target deltas look good.
 
 ## Safety Boundary
 

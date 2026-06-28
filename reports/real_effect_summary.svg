@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect width="100%" height="100%" fill="#f7f7f4"/>
+<text x="44" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1b1b1b">Certified real-model semantic effect</text>
+<text x="44" y="62" font-family="Arial, sans-serif" font-size="13" fill="#555">Local Hugging Face Pythia 70M, final hidden stream, ephemeral hook, no weight mutation</text>
+<rect x="78" y="74" width="866" height="354" fill="#ffffff" stroke="#d0d0c8"/>
+<line x1="78" y1="74.0" x2="944" y2="74.0" stroke="#ecece6"/>
+<text x="68" y="78.0" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.58</text>
+<line x1="78" y1="144.8" x2="944" y2="144.8" stroke="#ecece6"/>
+<text x="68" y="148.8" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.46</text>
+<line x1="78" y1="215.6" x2="944" y2="215.6" stroke="#ecece6"/>
+<text x="68" y="219.6" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.35</text>
+<line x1="78" y1="286.4" x2="944" y2="286.4" stroke="#ecece6"/>
+<text x="68" y="290.4" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.23</text>
+<line x1="78" y1="357.2" x2="944" y2="357.2" stroke="#ecece6"/>
+<text x="68" y="361.2" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.12</text>
+<line x1="78" y1="428.0" x2="944" y2="428.0" stroke="#ecece6"/>
+<text x="68" y="432.0" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#666">0.00</text>
+<line x1="83.4" y1="428" x2="83.4" y2="433" stroke="#888"/>
+<line x1="88.8" y1="428" x2="88.8" y2="433" stroke="#888"/>
+<line x1="99.7" y1="428" x2="99.7" y2="433" stroke="#888"/>
+<line x1="121.3" y1="428" x2="121.3" y2="433" stroke="#888"/>
+<line x1="164.6" y1="428" x2="164.6" y2="433" stroke="#888"/>
+<line x1="207.9" y1="428" x2="207.9" y2="433" stroke="#888"/>
+<line x1="251.2" y1="428" x2="251.2" y2="433" stroke="#888"/>
+<line x1="294.5" y1="428" x2="294.5" y2="433" stroke="#888"/>
+<line x1="402.7" y1="428" x2="402.7" y2="433" stroke="#888"/>
+<line x1="511.0" y1="428" x2="511.0" y2="433" stroke="#888"/>
+<line x1="727.5" y1="428" x2="727.5" y2="433" stroke="#888"/>
+<line x1="944.0" y1="428" x2="944.0" y2="433" stroke="#888"/>
+<polyline points="83.4,428.0 88.8,428.0 99.7,428.0 121.3,425.6 164.6,425.6 207.9,425.6 251.2,425.6 294.5,428.0 402.7,428.0 511.0,120.2 727.5,120.2 944.0,122.6" fill="none" stroke="#1f6f8b" stroke-width="3"/>
+<circle cx="83.4" cy="428.0" r="5" fill="#999999" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="88.8" cy="428.0" r="5" fill="#999999" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="99.7" cy="428.0" r="5" fill="#999999" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="121.3" cy="425.6" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="164.6" cy="425.6" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="207.9" cy="425.6" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="251.2" cy="425.6" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="294.5" cy="428.0" r="5" fill="#999999" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="402.7" cy="428.0" r="5" fill="#999999" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="511.0" cy="120.2" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="727.5" cy="120.2" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="944.0" cy="122.6" r="5" fill="#248a3d" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="511.0" cy="120.2" r="9" fill="none" stroke="#c53b2c" stroke-width="3"/>
+<text x="511.0" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">alpha sweep</text>
+<text transform="translate(24 251.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">target token log-prob delta</text>
+<rect x="642" y="96" width="292" height="244" rx="6" fill="#f2f5f1" stroke="#c7d3c4"/>
+<text x="660" y="124" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1b1b1b">Certified packet metrics</text>
+<text x="660" y="154" font-family="Arial, sans-serif" font-size="12" fill="#555">Accepted</text>
+<text x="910" y="154" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">True</text>
+<text x="660" y="179" font-family="Arial, sans-serif" font-size="12" fill="#555">Target log-prob delta</text>
+<text x="910" y="179" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">0.503906</text>
+<text x="660" y="204" font-family="Arial, sans-serif" font-size="12" fill="#555">Off-target degradation</text>
+<text x="910" y="204" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">0</text>
+<text x="660" y="229" font-family="Arial, sans-serif" font-size="12" fill="#555">Norm max</text>
+<text x="910" y="229" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">0.40548</text>
+<text x="660" y="254" font-family="Arial, sans-serif" font-size="12" fill="#555">Cosine min</text>
+<text x="910" y="254" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">0.999999</text>
+<text x="660" y="279" font-family="Arial, sans-serif" font-size="12" fill="#555">Rollback residue</text>
+<text x="910" y="279" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">0</text>
+<text x="660" y="304" font-family="Arial, sans-serif" font-size="12" fill="#555">Weights changed</text>
+<text x="910" y="304" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1b1b1b">False</text>
+<text x="44" y="494" font-family="Arial, sans-serif" font-size="12" fill="#555">Green points satisfy the preview gate; red ring is the official certified run. Packet accepted with unchanged weights and clean rollback.</text>
+</svg>

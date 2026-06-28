@@ -111,3 +111,37 @@ def write_operator_cards(result: ProbeResult | list[ProbeResult], path: str | Pa
         content.append(render_operator_card(item))
     path.write_text("\n".join(content), encoding="utf-8")
     return path
+
+
+def render_packet_card(packet: dict[str, Any]) -> str:
+    audit = packet.get("audit", {})
+    target = packet.get("target", {})
+    evidence = packet.get("evidence", {})
+    return "\n".join(
+        [
+            f"## {packet.get('packet_id', 'unknown_packet')}",
+            "",
+            f"Operator name: {packet.get('operator_type', 'unspecified')}",
+            f"Target state: {target.get('state_type', 'unspecified')} / {target.get('stream', 'unspecified')}",
+            f"Persistence: {packet.get('persistence', 'unspecified')}",
+            f"Preconditions: {_format_mapping(packet.get('preconditions', {}))}",
+            f"Intended effect: {_format_mapping(packet.get('intended_effect', {}))}",
+            f"Forbidden effects: {', '.join(packet.get('forbidden_effects', []))}",
+            f"Verifier: {_format_mapping(packet.get('verifier', {}))}",
+            f"Evidence: {_format_mapping(evidence)}",
+            f"Accepted / rejected: {'accepted' if audit.get('accepted') else 'rejected'}",
+            f"Rejection reasons: {', '.join(audit.get('rejection_reasons', [])) or 'none'}",
+            f"Human rendering: {audit.get('human_rendering', '')}",
+            "",
+        ]
+    )
+
+
+def write_packet_cards(packets: list[dict[str, Any]], path: str | Path) -> Path:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    content = ["# CSS Packet Cards", ""]
+    for packet in packets:
+        content.append(render_packet_card(packet))
+    path.write_text("\n".join(content), encoding="utf-8")
+    return path

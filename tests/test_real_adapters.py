@@ -27,8 +27,16 @@ class FakeAdapter:
             metrics={
                 "target_token_logprob_delta": 0.125,
                 "target_success_delta": 0.125,
+                "target_case_deltas": {"target": 0.125},
+                "target_case_delta_min": 0.125,
                 "off_target_delta": 0.0,
                 "off_target_degradation_max": 0.0,
+                "off_target_case_deltas": {"off_target": 0.0},
+                "off_target_case_degradation_max": 0.0,
+                "forbidden_case_deltas": {"forbidden": 0.0},
+                "forbidden_leakage_max": 0.0,
+                "per_case_evidence_present": True,
+                "forbidden_effect_evidence_present": True,
                 "norm_delta_mean": 0.1,
                 "norm_delta_max": 0.1,
                 "cosine_drift_mean": 0.995,
@@ -128,6 +136,7 @@ def test_fake_real_adapter_emits_valid_packet_and_certificate():
     suite = PromptSuite(
         target=[PromptCase(prompt="The capital of France is", target_token=" Paris")],
         off_target=[PromptCase(prompt="2 + 2 =", target_token=" 4")],
+        forbidden=[PromptCase(prompt="The capital of Germany is", target_token=" Paris")],
     )
     config = ActivationSurgeryConfig(
         backend="fake",
@@ -213,6 +222,7 @@ def test_real_adapter_rejects_persistence_warning_from_adapter():
     suite = PromptSuite(
         target=[PromptCase(prompt="The capital of France is", target_token=" Paris")],
         off_target=[PromptCase(prompt="2 + 2 =", target_token=" 4")],
+        forbidden=[PromptCase(prompt="The capital of Germany is", target_token=" Paris")],
     )
     config = ActivationSurgeryConfig(
         backend="fake",
@@ -238,6 +248,14 @@ def test_persistent_real_model_packet_is_rejected_by_existing_gate():
         metrics={
             "target_token_logprob_delta": 0.0,
             "off_target_degradation_max": 0.0,
+            "target_case_deltas": {"target": 0.0},
+            "target_case_delta_min": 0.0,
+            "off_target_case_deltas": {"off_target": 0.0},
+            "off_target_case_degradation_max": 0.0,
+            "forbidden_case_deltas": {"forbidden": 0.0},
+            "forbidden_leakage_max": 0.0,
+            "per_case_evidence_present": True,
+            "forbidden_effect_evidence_present": True,
             "norm_delta_max": 0.0,
             "cosine_drift_min": 1.0,
             "rollback_residue": 0.0,
@@ -272,3 +290,42 @@ def test_persistent_real_model_packet_is_rejected_by_existing_gate():
 
     assert ok is False
     assert "phase0_rejected_persistence:persistent" in warnings
+
+
+def test_real_adapter_rejects_missing_per_case_evidence():
+    class AggregateOnlyAdapter(FakeAdapter):
+        def run_activation_surgery(self, config):
+            result = super().run_activation_surgery(config)
+            for key in [
+                "target_case_deltas",
+                "target_case_delta_min",
+                "off_target_case_deltas",
+                "off_target_case_degradation_max",
+                "forbidden_case_deltas",
+                "forbidden_leakage_max",
+                "per_case_evidence_present",
+                "forbidden_effect_evidence_present",
+            ]:
+                result.metrics.pop(key, None)
+            return result
+
+    suite = PromptSuite(
+        target=[PromptCase(prompt="The capital of France is", target_token=" Paris")],
+        off_target=[PromptCase(prompt="2 + 2 =", target_token=" 4")],
+        forbidden=[PromptCase(prompt="The capital of Germany is", target_token=" Paris")],
+    )
+    config = ActivationSurgeryConfig(
+        backend="fake",
+        model_name_or_path="fake-local-model",
+        prompt_suite=suite,
+        layer=0,
+        stream="residual",
+        alpha=0.1,
+        vector=[0.1, 0.0, 0.0],
+    )
+
+    result = run_real_activation_surgery(config, adapter=AggregateOnlyAdapter())
+
+    assert result.accepted is False
+    assert "missing_per_case_behavioral_evidence" in result.warnings
+    assert "missing_forbidden_effect_evidence" in result.warnings
