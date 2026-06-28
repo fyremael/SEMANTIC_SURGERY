@@ -1,0 +1,3 @@
+# Init
+
+Repository scaffold initialized.
